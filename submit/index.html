@@ -9,6 +9,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="scripts/pageSwitcher.js"></script>
         <script type="text/javascript" src="scripts/compulsoryFieldsChecker.js"></script>
+        <script type="text/javascript" src="scripts/connectedFieldsChecker.js"></script>
         <script type="text/javascript" src="scripts/rowManager.js"></script>
         <style>
             .date {
@@ -74,8 +75,7 @@
                 <p class="text-danger">* Compulsory</p>
                 <div class="well">
                     <h3>Courses taught *</h3>
-                    <p class="help-block">Numbered list. Include all courses taught or co-taught by members of your unit.
-                        For each item, list: course name; semester ("Spring" or "Fall"); level (bachelor, master, PhD); approximate number of students.</p>
+                    <p class="help-block">Include all courses taught or co-taught by members of your unit.</p>
                     <table class="table table-condensed">
                         <thead>
                         <tr>
@@ -124,18 +124,150 @@
                         </tbody>
                     </table>
                     <h3>Examinations *</h3>
-                    <p class="help-block">Numbered list. Include all examinations administered or co-administered by members of your unit.
-                        For each item, list: course name; semester ("Spring" or "Fall"); kind of exam (final exam of the course, repetition exam); approximate number of students taking the exam.</p>
-                    <div class="form-group"><input class="compulsoryField" type="text"></div>
+                    <p class="help-block">Include all examinations administered or co-administered by members of your unit.</p>
+                    <table class="table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Course name</th>
+                            <th>Semester</th>
+                            <th>Kind of exam</th>
+                            <th>Approximate number of students</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td class="number">1</td>
+                            <td>
+                                <div class="form-group">
+                                    <input class="compulsoryField form-control" type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Spring</option>
+                                        <option>Fall</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                        <option>Final exam</option>
+                                        <option>Repetition exam</option>
+                                        <option>Midterm exam</option>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input class="compulsoryField form-control" type="number">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="add btn btn-default">Add more</button>
+                                <button class="delete btn btn-danger" style="display: none">Delete</button>
+                            </td>
+                        </tbody>
+                    </table>
                     <h3>Students supervised *</h3>
                     <p class="help-block">For each student, indicate student name and nature of work, e.g. bachelor thesis, master thesis, summer internship.</p>
-                    <div class="form-group"><input class="compulsoryField" type="text"></div>
+                    <table class="table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Student name</th>
+                            <th>Nature of work</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input class="compulsoryField form-control" type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input class="compulsoryField form-control" type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="add btn btn-default">Add more</button>
+                                <button class="delete btn btn-danger" style="display: none">Delete</button>
+                            </td>
+                        </tbody>
+                    </table>
                     <h3>Completed student reports *</h3>
                     <p class="help-block">For each report, indicate student name, title of report, as well as publication plans if any.</p>
-                    <div class="form-group"><input class="compulsoryField" type="text"></div>
+                    <table class="table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Student name</th>
+                            <th>Title</th>
+                            <th>Publication plans</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input class="compulsoryField form-control" type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input class="compulsoryField form-control" type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input class="form-control" type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="add btn btn-default">Add more</button>
+                                <button class="delete btn btn-danger" style="display: none">Delete</button>
+                            </td>
+                        </tbody>
+                    </table>
                     <h3>Completed PhD theses</h3>
                     <p class="help-block">For each report, indicate student name, title of report, as well as publication plans if any.</p>
-                    <div class="form-group"><input type="text"></div>
+                    <table class="table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Student name</th>
+                            <th>Title</th>
+                            <th>Publication plans</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="form-group">
+                                    <input class="form-control connectedField" type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input class="form-control connectedField" type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input class="form-control" type="text">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="add btn btn-default">Add more</button>
+                                <button class="delete btn btn-danger" style="display: none">Delete</button>
+                            </td>
+                        </tbody>
+                    </table>
                 </div>
                 <button class="previous btn btn-default">Previous</button>
                 <button class="next btn btn-default">Next</button>

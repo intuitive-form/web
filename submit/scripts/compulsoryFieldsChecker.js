@@ -8,7 +8,7 @@ function checkCompulsoryFields(page) {
         if (children[i].value == ""){
             $(children[i]).parent().addClass("has-error");
             if ($(children[i]).parent().find($(".alert")).length == 0) {
-                $(children[i]).parent().append("<div class='alert alert-danger'>All compulsory fields should be filled</div>");
+                $(children[i]).after("<div class='alert alert-danger'>All compulsory fields should be filled</div>");
             }
             condition = false;
         }
