@@ -9,6 +9,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="scripts/pageSwitcher.js"></script>
         <script type="text/javascript" src="scripts/compulsoryFieldsChecker.js"></script>
+        <script type="text/javascript" src="scripts/rowManager.js"></script>
         <style>
             .date {
                 width: 200px;
@@ -75,9 +76,10 @@
                     <h3>Courses taught *</h3>
                     <p class="help-block">Numbered list. Include all courses taught or co-taught by members of your unit.
                         For each item, list: course name; semester ("Spring" or "Fall"); level (bachelor, master, PhD); approximate number of students.</p>
-                    <table class="table">
+                    <table class="table table-condensed">
                         <thead>
                         <tr>
+                            <th>#</th>
                             <th>Course name</th>
                             <th>Semester</th>
                             <th>Level</th>
@@ -87,6 +89,7 @@
                         </thead>
                         <tbody>
                         <tr>
+                            <td class="number">1</td>
                             <td>
                                 <div class="form-group">
                                     <input class="compulsoryField form-control" type="text">
@@ -109,8 +112,15 @@
                                     </select>
                                 </div>
                             </td>
-                            <td><div class="form-group"><input class="compulsoryField form-control" type="number"></div></td>
-                            <td><button class="add btn btn-default">Add more</button></td>
+                            <td>
+                                <div class="form-group">
+                                    <input class="compulsoryField form-control" type="number">
+                                </div>
+                            </td>
+                            <td>
+                                <button class="add btn btn-default">Add more</button>
+                                <button class="delete btn btn-danger" style="display: none">Delete</button>
+                            </td>
                         </tbody>
                     </table>
                     <h3>Examinations *</h3>
