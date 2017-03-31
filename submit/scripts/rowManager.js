@@ -13,10 +13,10 @@ function addRow() {
         $(this).parent().find(".delete").show();
     }
     var newRow = $(row).clone();
-    $(newRow).find("input").val("")
-    $(newRow).find(".add").click(this, addRow);
-    $(newRow).find(".delete").click(this, deleteRow);
+    $(newRow).find("input").val("");
     $(row).after(newRow);
+    setAddButtons($(newRow).find(".add"));
+    setDeleteButtons($(newRow).find(".delete"));
     recountNumbers(newRow);
 }
 function deleteRow() {
@@ -28,7 +28,3 @@ function deleteRow() {
         $(sibling).parent().find(".delete").hide();
     }
 }
-$( document ).ready(function() {
-    $( ".add" ).click(this, addRow);
-    $( ".delete" ).click(this, deleteRow);
-});

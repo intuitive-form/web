@@ -12,10 +12,8 @@ function cancelWarning(fields) {
 function checkConnectedFields(page) {
     var condition = true;
     var rows = $(page).find("tr");
-    console.log(rows);
     for (var i = 0; i < rows.length; i++) {
         var connectedFields = $(rows[i]).find(".connectedField");
-        console.log(connectedFields);
         if (connectedFields.length != 0) var filled = connectedFields[0].value != "";
         cancelWarning(connectedFields);
         for (var j = 1; j < connectedFields.length; j++) {

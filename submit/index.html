@@ -11,6 +11,8 @@
         <script type="text/javascript" src="scripts/compulsoryFieldsChecker.js"></script>
         <script type="text/javascript" src="scripts/connectedFieldsChecker.js"></script>
         <script type="text/javascript" src="scripts/rowManager.js"></script>
+        <script type="text/javascript" src="scripts/tableRowNameSetter.js"></script>
+        <script type="text/javascript" src="scripts/buttonManager.js"></script>
         <style>
             .date {
                 width: 200px;
@@ -34,7 +36,7 @@
             </div>
         </div><!-- /.container-fluid -->
     </nav>
-        <form action="submit">
+        <form action="submit" method="post">
             <div class="container" style="background-color: white">
                 <div class="page-header"><h1>Innopolis University: unit annual report, 2016</h1></div>
                 <div class="page" id="1">
@@ -50,19 +52,19 @@
                         <h3>Name of unit *</h3>
                         <p class="help-block">Official name, for example laboratory name</p>
                         <div class="form-group">
-                            <input class="compulsoryField form-control" type="text">
+                            <input name="unit-name" class="compulsoryField form-control" type="text">
                         </div>
                         <h3>Name of head unit *</h3>
                         <div class="form-group">
-                            <input class="compulsoryField form-control" type="text">
+                            <input name="head-name" class="compulsoryField form-control" type="text">
                         </div>
                         <h3>Start of reporting period <small>(if other than 1.1.2016)</small></h3>
                         <div class="form-group connectedField">
-                            <input type="date" class="form-control date">
+                            <input name="reporting-period-start" type="date" class="form-control date">
                         </div>
                         <h3>End of reporting period <small>(if other than 31.12.2016)</small></h3>
                         <div class="form-group connectedField">
-                            <input type="date" class="form-control date">
+                            <input name="reporting-period-end" type="date" class="form-control date">
                         </div>
                     </div>
                     <button type="button" class="previous btn btn-default">Previous</button>
@@ -76,7 +78,7 @@
                     <div class="well">
                         <h3>Courses taught *</h3>
                         <p class="help-block">Include all courses taught or co-taught by members of your unit.</p>
-                        <table class="table table-condensed">
+                        <table class="table table-condensed level1">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -92,12 +94,12 @@
                                 <td class="number">1</td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="compulsoryField form-control" type="text">
+                                        <input name="courses-course-name-1" class="compulsoryField form-control" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <select class="form-control">
+                                        <select name="courses-semester-1" class="form-control">
                                             <option>Spring</option>
                                             <option>Fall</option>
                                         </select>
@@ -105,7 +107,7 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <select class="form-control">
+                                        <select name="courses-level-1" class="form-control">
                                             <option>Bachelor</option>
                                             <option>Master</option>
                                             <option>PhD</option>
@@ -114,18 +116,19 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="compulsoryField form-control" type="number">
+                                        <input name="courses-students-number-1" class="compulsoryField form-control" type="number">
                                     </div>
                                 </td>
                                 <td>
                                     <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">Delete</button>
                                 </td>
+                            </tr>
                             </tbody>
                         </table>
                         <h3>Examinations *</h3>
                         <p class="help-block">Include all examinations administered or co-administered by members of your unit.</p>
-                        <table class="table table-condensed">
+                        <table class="level1 table table-condensed">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -141,12 +144,12 @@
                                 <td class="number">1</td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="compulsoryField form-control" type="text">
+                                        <input name="examinations-course-name-1" class="compulsoryField form-control" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <select class="form-control">
+                                        <select name="examinations-semester-1" class="form-control">
                                             <option>Spring</option>
                                             <option>Fall</option>
                                         </select>
@@ -154,7 +157,7 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <select class="form-control">
+                                        <select name="examinations-exam-kind-1" class="form-control">
                                             <option>Final exam</option>
                                             <option>Repetition exam</option>
                                             <option>Midterm exam</option>
@@ -163,18 +166,19 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="compulsoryField form-control" type="number">
+                                        <input name="examinations-students-number-1" class="compulsoryField form-control" type="number">
                                     </div>
                                 </td>
                                 <td>
                                     <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">Delete</button>
                                 </td>
+                            </tr>
                             </tbody>
                         </table>
                         <h3>Students supervised *</h3>
                         <p class="help-block">For each student, indicate student name and nature of work, e.g. bachelor thesis, master thesis, summer internship.</p>
-                        <table class="table table-condensed">
+                        <table class="level1 table table-condensed">
                             <thead>
                             <tr>
                                 <th>Student name</th>
@@ -186,23 +190,24 @@
                             <tr>
                                 <td>
                                     <div class="form-group">
-                                        <input class="compulsoryField form-control" type="text">
+                                        <input name="students-supervised-name-1" class="compulsoryField form-control" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="compulsoryField form-control" type="text">
+                                        <input name="students-supervised-work-nature-1" class="compulsoryField form-control" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">Delete</button>
                                 </td>
+                            </tr>
                             </tbody>
                         </table>
                         <h3>Completed student reports *</h3>
                         <p class="help-block">For each report, indicate student name, title of report, as well as publication plans if any.</p>
-                        <table class="table table-condensed">
+                        <table class="level1 table table-condensed">
                             <thead>
                             <tr>
                                 <th>Student name</th>
@@ -215,28 +220,29 @@
                             <tr>
                                 <td>
                                     <div class="form-group">
-                                        <input class="compulsoryField form-control" type="text">
+                                        <input name="completed-student-reports-name-1" class="compulsoryField form-control" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="compulsoryField form-control" type="text">
+                                        <input name="completed-student-reports-title-1" class="compulsoryField form-control" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control" type="text">
+                                        <input name="completed-student-reports-publication-plans-1" class="form-control" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">Delete</button>
                                 </td>
+                            </tr>
                             </tbody>
                         </table>
                         <h3>Completed PhD theses</h3>
                         <p class="help-block">For each report, indicate student name, title of report, as well as publication plans if any.</p>
-                        <table class="table table-condensed">
+                        <table class="level1 table table-condensed">
                             <thead>
                             <tr>
                                 <th>Student name</th>
@@ -249,23 +255,24 @@
                             <tr>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control connectedField" type="text">
+                                        <input name="completed-PhD-theses-name-1" class="form-control connectedField" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control connectedField" type="text">
+                                        <input name="completed-PhD-theses-title-1" class="form-control connectedField" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control" type="text">
+                                        <input name="completed-PhD-theses-publication-plans-1" class="form-control connectedField" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">Delete</button>
                                 </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -279,10 +286,10 @@
                     <p class="text-danger">* Compulsory</p>
                     <div class="well">
                         <h3>Grants *</h3>
-                        <p class="help-block">Numbered list. For each item, list: title of project; granting agency; period covered by grant; whether continuation of other grant; amount.</p>
-                        <table class="table table-condensed">
+                        <table class="level1 table table-condensed">
                             <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Title</th>
                                 <th>Granting agency</th>
                                 <th>Period start</th>
@@ -294,47 +301,50 @@
                             </thead>
                             <tbody>
                             <tr>
+                                <td class="number">1</td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control compulsoryField" type="text">
+                                        <input name="grants-title-1" class="form-control compulsoryField" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control compulsoryField" type="text">
+                                        <input name="grants-granting-agency-1" class="form-control compulsoryField" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control date compulsoryField" type="date">
+                                        <input name="period-start-1" class="form-control date compulsoryField" type="date">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control date compulsoryField" type="date">
+                                        <input name="period-end-1" class="form-control date compulsoryField" type="date">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control" type="text">
+                                        <input name="grants-continuation-1" class="form-control" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control compulsoryField" type="number">
+                                        <input name="grants-amount-1" class="form-control compulsoryField" type="number">
                                     </div>
                                 </td>
                                 <td>
                                     <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">Delete</button>
                                 </td>
+                            </tr>
                             </tbody>
                         </table>
                         <h3>Research projects *</h3>
-                        <p class="help-block">Numbered list. Include all significant research themes in which members of your unit are involved, whether or not supported by a grant. For each item, list: title of project; Innopolis University personnel involved; external personnel involved if any; start date of project; expected end date; sources of financing.</p>
-                        <table class="table table-condensed">
+                        <p class="help-block">Include all significant research themes in which members of your unit are involved.</p>
+                        <table class="level1 table table-condensed">
                             <thead>
                             <tr>
+                                <th>#</th>
                                 <th>Title</th>
                                 <th>Personnel involved</th>
                                 <th>Extra personnel involved</th>
@@ -346,17 +356,17 @@
                             </thead>
                             <tbody>
                             <tr>
+                                <td class="number">1</td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control compulsoryField" type="text">
+                                        <input name="research-projects-title-1" class="form-control compulsoryField" type="text">
                                     </div>
                                 </td>
                                 <td>
-                                    <table class="table table-condensed">
+                                    <table class="level2 table table-condensed">
                                             <thead>
                                             <tr>
-                                                <th>First name</th>
-                                                <th>Last name</th>
+                                                <th>Name</th>
                                                 <th></th>
                                             </tr>
                                             </thead>
@@ -364,12 +374,7 @@
                                             <tr>
                                                 <td>
                                                     <div class="form-group">
-                                                        <input class="form-control compulsoryField" type="text">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input class="form-control compulsoryField" type="text">
+                                                        <input name="research-projects-personnel-involved-name-1-1" class="form-control compulsoryField" type="text">
                                                     </div>
                                                 </td>
                                                 <td>
@@ -380,11 +385,10 @@
                                         </table>
                                 </td>
                                 <td>
-                                    <table class="table table-condensed">
+                                    <table class="level2 table table-condensed">
                                             <thead>
                                             <tr>
-                                                <th>First name</th>
-                                                <th>Last name</th>
+                                                <th>Name</th>
                                                 <th></th>
                                             </tr>
                                             </thead>
@@ -392,56 +396,195 @@
                                             <tr>
                                                 <td>
                                                     <div class="form-group">
-                                                        <input class="form-control connectedField" type="text">
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="form-group">
-                                                        <input class="form-control connectedField" type="text">
+                                                        <input name="research-projects-extra-personnel-involved-name-1-1" class="form-control connectedField" type="text">
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <button class="add btn btn-default">Add more</button>
                                                     <button class="delete btn btn-danger" style="display: none">Delete</button>
                                                 </td>
+                                            </tr>
                                             </tbody>
                                     </table>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control compulsoryField" type="date">
+                                        <input name="research-projects-start-date-1" class="form-control compulsoryField" type="date">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control compulsoryField" type="date">
+                                        <input name="research-projects-end-date-1" class="form-control compulsoryField" type="date">
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
-                                        <input class="form-control compulsoryField" type="text">
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="form-group">
-                                        <input class="form-control compulsoryField" type="number">
+                                        <input name="research-projects-financing-sources-1" class="form-control compulsoryField" type="text">
                                     </div>
                                 </td>
                                 <td>
                                     <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">Delete</button>
                                 </td>
+                            </tr>
                             </tbody>
                         </table>
                         <h3>Research collaborations</h3>
-                        <p class="help-block">Numbered list. For each item, indicate: country of institution; name of institution (and department or unit if relevant); name of principal contact and any other important contacts; nature of collaboration</p>
-                        <div class="form-group"><input type="text"></div>
+                        <p class="help-block"></p>
+                        <table class="level1 table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Country of institution</th>
+                                <th>Name of institution</th>
+                                <th>Contacts</th>
+                                <th>Nature of collaboration</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="number">1</td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="research-collaboration-country-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="research-collaboration-name-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <table class="level2 table table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input name="research-collaboration-contracts-name-1-1" class="form-control" type="text">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button class="add btn btn-default">Add more</button>
+                                                <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                            </td>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="research-collaboration-nature-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="add btn btn-default">Add more</button>
+                                    <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                         <h3>Conference publications</h3>
-                        <p class="help-block">Numbered list. Indicate all publications of which members of the unit are authors or coauthors. Use standard style for scientific bibliography entries.</p>
-                        <div class="form-group"><input type="text"></div>
+                        <p class="help-block">Indicate all publications of which members of the unit are authors or coauthors.</p>
+                        <table class="level1 table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Authors</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="number">1</td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="conference-publications-title-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <table class="level2 table table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input name="conference-publications-author-1-1" class="form-control connectedField" type="text">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button class="add btn btn-default">Add more</button>
+                                                <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                            </td>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <button class="add btn btn-default">Add more</button>
+                                    <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                         <h3>Journal publications</h3>
-                        <p class="help-block">Numbered list. Indicate all publications of which members of the unit are authors or coauthors. Use standard style for scientific bibliography entries.</p>
-                        <div class="form-group"><input type="text"></div>
+                        <p class="help-block">Indicate all publications of which members of the unit are authors or coauthors.</p>
+                        <table class="level1 table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Authors</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="number">1</td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="journal-publications-title-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <table class="level2 table table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input name="journal-publications-author-1-1" class="form-control connectedField" type="text">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button class="add btn btn-default">Add more</button>
+                                                <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                            </td>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <button class="add btn btn-default">Add more</button>
+                                    <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <button type="button" class="previous btn btn-default">Previous</button>
                     <button type="button" class="next btn btn-default">Next</button>
@@ -452,11 +595,57 @@
                     </h2>
                     <div class="well">
                         <h3>Patents</h3>
-                        <p class="help-block">List patents filed or otherwise submitted during the reported period. Indicate country of patent office.</p>
-                        <div class="form-group"><input type="text"></div>
+                        <p class="help-block">List patents filed or otherwise submitted during the reported period.</p>
+                        <table class="level1 table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Сountry of patent</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="patents-title-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="patents-country-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="add btn btn-default">Add more</button>
+                                    <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                         <h3>IP licensing (software or others)</h3>
                         <p class="help-block">List licenses granted.</p>
-                        <div class="form-group"><input type="text"></div>
+                        <table class="level1 table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="licenses-title-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="add btn btn-default">Add more</button>
+                                    <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <button type="button" class="previous btn btn-default">Previous</button>
                     <button type="button" class="next btn btn-default">Next</button>
@@ -467,14 +656,140 @@
                     </h2>
                     <div class="well">
                         <h3>Best paper awards</h3>
-                        <p class="help-block">For each item, indicate authors of the awarded article, title of the article, awarding conference or journal, exact wording of award, date</p>
-                        <div class="form-group"><input type="text"></div>
+                        <table class="level1 table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Authors</th>
+                                <th>Awarding conference or journal</th>
+                                <th>Exact wording of award</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="number">1</td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="paper-awards-title-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <table class="level2 table table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="form-group">
+                                                    <input name="paper-awards-author-1-1" class="form-control connectedField" type="text">
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <button class="add btn btn-default">Add more</button>
+                                                <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                            </td>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="paper-awards-awarding-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="paper-awards-wording-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="paper-awards-date-1" class="form-control connectedField" type="date">
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="add btn btn-default">Add more</button>
+                                    <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                         <h3>Memberships</h3>
-                        <p class="help-block">Membership in academies, international working groups (for example IFIP or ACM), standards committees (e.g. ISO, Ecma) etc. For each item, indicate name of member, date of membership</p>
-                        <div class="form-group"><input type="text"></div>
+                        <p class="help-block">Membership in academies, international working groups (for example IFIP or ACM), standards committees (e.g. ISO, Ecma) etc.</p>
+                        <table class="level1 table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>Name of member</th>
+                                <th>Date of membership</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="memberships-name-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="memberships-date-1" class="form-control connectedField" type="date">
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="add btn btn-default">Add more</button>
+                                    <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                         <h3>Prizes</h3>
                         <p class="help-block">List prizes received during reporting period. For each item, indicate recipient, name of prize, granting institution, date.</p>
-                        <div class="form-group"><input type="text"></div>
+                        <table class="level1 table table-condensed level1">
+                            <thead>
+                            <tr>
+                                <th>Recipient</th>
+                                <th>Name of prize</th>
+                                <th>Granting institution</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="prizes-recipient-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="prizes-name-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="prizes-granting-institution-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="prizes-date-1" class="form-control connectedField" type="date">
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="add btn btn-default">Add more</button>
+                                    <button class="delete btn btn-danger" style="display: none">Delete</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <button type="button" class="previous btn btn-default">Previous</button>
                     <button type="button" class="next btn btn-default">Next</button>
@@ -486,7 +801,7 @@
                 <div class="well">
                     <h3>Other relevant information</h3>
                     <p class="help-block">Add any information on your unit's achievements that is not covered by the previous sections.</p>
-                    <div class="form-group"><textarea class="form-control"></textarea></div>
+                    <div class="form-group"><textarea name="other-information" class="form-control"></textarea></div>
                 </div>
                 <button type="button" class="previous btn btn-default">Previous</button>
                 <input type="submit" class="btn btn-success" value="Submit">
