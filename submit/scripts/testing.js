@@ -8,13 +8,14 @@ function fill(){
         page.find("input").each(function () {
             var input = $(this);
             if (input.attr("type") == "number"){
-                input.val(0);
+                input.val(Math.random());
             }
             else if (input.attr("type") == "text"){
-                input.val("hi");
+                input.val(input.attr("name"));
             }
             else if (input.attr("type") == "date"){
-                input.val("1999-06-10");
+                var rightNow = new Date(2017, Math.floor(Math.random()*12), Math.floor(Math.random()*31 + 1));
+                input.val(rightNow.toISOString().slice(0,10));
             }
         });
     });
@@ -28,4 +29,8 @@ function unfill() {
             input.val("");
         });
     });
+}
+
+function next() {
+    //TODO: current next button trigger
 }
