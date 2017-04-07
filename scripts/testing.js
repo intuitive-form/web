@@ -33,6 +33,6 @@ function unfill() {
     });
 }
 
-function next() {
-    //TODO: current next button trigger
+function submit() {
+    $("[type='submit']").trigger("click");
 }
