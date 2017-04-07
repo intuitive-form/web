@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intuitive Form Project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="scripts/queryFormChanger.js"></script>
+    <script type="text/javascript" src="../scripts/compulsoryFieldsChecker.js"></script>
+    <script type="text/javascript" src="scripts/submitFieldsChecker.js"></script>
+    <style>
+        /*.table-borderless > tbody > tr > td,
+        .table-borderless > tbody > tr > th,
+        .table-borderless > tfoot > tr > td,
+        .table-borderless > tfoot > tr > th,
+        .table-borderless > thead > tr > td,
+        .table-borderless > thead > tr > th {
+            border: none;
+        }
+        .form-group {
+            //width: 200px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        .querySelectForm {
+            //width: 450px;
+            margin-bottom: 30px;
+        }*/
+        form {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <span class="navbar-brand">Intuitive Form Project</span>
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+    <div class="container">
+        <div class="page-header text-center"><h1>Administration application</h1></div>
+        <form class="form-horizontal querySelectForm">
+            <div class="form-group form-group-lg">
+                <label class="col-sm-3 control-label">Choose a query</label>
+                <div class="col-sm-7">
+                    <select class="compulsoryField form-control" id="querySelect">
+                        <option class="query1">All publications of the university in a given year</option>
+                        <option class="query2">Cumulative info of a given unit over several years</option>
+                        <option class="query3">Courses taught by a Laboratory between initial and final date</option>
+                        <option class="query4">Number of supervised students by Laboratories</option>
+                        <option class="query5">Number of research collaboration, if any, by Laboratories</option>
+                        <option class="query6">List of all examinations in a given period of time</option>
+                        <option class="query7">Total amount of money received by a given Laboratory, if any</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <div class="center-block">
+            <form action="submit" method="post" class="form-horizontal query1">
+                <div class="form-group">
+                    <label class="col-sm-5 control-label">Year</label>
+                    <div class="col-sm-2">
+                        <input name="query1-year" class="compulsoryField form-control" type="number" value="2016">
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="submit" class="btn btn-success center-block" value="Submit">
+                    </div>
+                </div>
+            </form>
+            <form action="submit" method="post" class="form-horizontal query2" style="display: none">
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Unit name</label>
+                    <div class="col-sm-4">
+                        <input name="query2-unit-name" class="compulsoryField form-control" type="text">
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="submit" class="btn btn-success center-block" value="Submit">
+                    </div>
+                </div>
+            </form>
+            <form action="submit" method="post" class="form-horizontal query3" style="display: none">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Laboratory name</label>
+                        <div class="col-sm-3">
+                            <input name="query2-laboratory-name" class="compulsoryField form-control" type="text">
+                        </div>
+                        <label class="col-sm-2 control-label">Initial date</label>
+                        <div class="col-sm-2">
+                            <input name="query2-initial-date" class="compulsoryField form-control" type="date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    <label class="col-sm-8 control-label">Final date</label>
+                    <div class="col-sm-2">
+                        <input name="query2-final-date" class="compulsoryField form-control" type="date">
+                    </div>
+                    </div>
+                <input type="submit" class="btn btn-success center-block" value="Submit">
+            </form>
+            <form action="submit" method="post" class="query4" style="display: none">
+                <input type="submit" class="btn btn-success center-block" value="Submit"/>
+            </form>
+            <form action="submit" method="post" class="query5" style="display: none">
+                <input type="submit" class="btn btn-success center-block" value="Submit"/>
+            </form>
+            <form action="submit" method="post" class="form-horizontal query6" style="display: none">
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Initial date</label>
+                    <div class="col-sm-2">
+                        <input name="query2-initial-date" class="compulsoryField form-control" type="date">
+                    </div>
+                    <label class="col-sm-2 control-label">Final date</label>
+                    <div class="col-sm-2">
+                        <input name="query2-final-date" class="compulsoryField form-control" type="date">
+                    </div>
+                    <div class="col-sm-1">
+                        <input type="submit" class="btn btn-success center-block" value="Submit">
+                    </div>
+                </div>
+            </form>
+            <form action="submit" method="post" class="form-horizontal query7" style="display: none">
+            <div class="form-group">
+                <label class="col-sm-4 control-label">Laboratory name</label>
+                <div  class="col-sm-4">
+                    <input name="query2-laboratory-name" class="compulsoryField form-control" type="text">
+                </div>
+                <div  class="col-sm-1">
+                    <input type="submit" class="btn btn-success center-block" value="Submit">
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</body>
+</html>

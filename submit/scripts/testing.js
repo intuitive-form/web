@@ -8,7 +8,7 @@ function fill(){
         page.find("input").each(function () {
             var input = $(this);
             if (input.attr("type") == "number"){
-                input.val(Math.random());
+                input.val(Math.floor(Math.random()*100));
             }
             else if (input.attr("type") == "text"){
                 input.val(input.attr("name"));
