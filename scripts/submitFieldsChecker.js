@@ -3,7 +3,6 @@
  */
 $( document ).ready(function(){
     $("form").submit(function () {
-        console.log("hi")
         var compulsoryFields = checkCompulsoryFields($(this));
         var connectedFields = checkConnectedFields($(this));
         var dates = dateCheck($(this));

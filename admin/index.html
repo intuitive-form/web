@@ -9,6 +9,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="scripts/queryFormChanger.js"></script>
     <script type="text/javascript" src="../scripts/compulsoryFieldsChecker.js"></script>
+    <script type="text/javascript" src="../scripts/connectedFieldsChecker.js"></script>
+    <script type="text/javascript" src="../scripts/dateChecker.js"></script>
     <script type="text/javascript" src="../scripts/testing.js"></script>
     <script type="text/javascript" src="../scripts/submitFieldsChecker.js"></script>
     <style>
@@ -81,13 +83,13 @@
                         </div>
                         <label class="col-sm-2 control-label">Initial date</label>
                         <div class="col-sm-2">
-                            <input name="query2-initial-date" class="compulsoryField form-control" type="date">
+                            <input name="query2-initial-date" class="compulsoryField form-control start-date" type="date">
                         </div>
                     </div>
                     <div class="form-group">
                     <label class="col-sm-8 control-label">Final date</label>
                     <div class="col-sm-2">
-                        <input name="query2-final-date" class="compulsoryField form-control" type="date">
+                        <input name="query2-final-date" class="compulsoryField form-control end-date" type="date">
                     </div>
                     </div>
                 <input type="submit" class="btn btn-success center-block" value="Submit">
@@ -102,11 +104,11 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Initial date</label>
                     <div class="col-sm-2">
-                        <input name="query2-initial-date" class="compulsoryField form-control" type="date">
+                        <input name="query2-initial-date" class="compulsoryField form-control start-date" type="date">
                     </div>
                     <label class="col-sm-2 control-label">Final date</label>
                     <div class="col-sm-2">
-                        <input name="query2-final-date" class="compulsoryField form-control" type="date">
+                        <input name="query2-final-date" class="compulsoryField form-control end-date" type="date">
                     </div>
                     <div class="col-sm-1">
                         <input type="submit" class="btn btn-success center-block" value="Submit">

@@ -9,13 +9,13 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="scripts/pageSwitcher.js"></script>
         <script type="text/javascript" src="../scripts/compulsoryFieldsChecker.js"></script>
-        <script type="text/javascript" src="scripts/connectedFieldsChecker.js"></script>
+        <script type="text/javascript" src="../scripts/connectedFieldsChecker.js"></script>
         <script type="text/javascript" src="scripts/rowManager.js"></script>
         <script type="text/javascript" src="scripts/tableRowNameSetter.js"></script>
         <script type="text/javascript" src="scripts/buttonManager.js"></script>
         <script type="text/javascript" src="../scripts/testing.js"></script>
         <script type="text/javascript" src="../scripts/submitFieldsChecker.js"></script>
-        <script type="text/javascript" src="scripts/dateChecker.js"></script>
+        <script type="text/javascript" src="../scripts/dateChecker.js"></script>
         <style>
             .date {
                 //width: 200px;
@@ -352,8 +352,7 @@
                                 <th>Title</th>
                                 <th>Personnel involved</th>
                                 <th>Extra personnel involved</th>
-                                <th>Date of start</th>
-                                <th>Expected date of end</th>
+                                <th>Dates</th>
                                 <th>Sources of financing</th>
                                 <th></th>
                             </tr>
@@ -413,11 +412,11 @@
                                 </td>
                                 <td>
                                     <div class="form-group">
+                                        <label>Date of start</label>
                                         <input name="research-projects-start-date-1" class="form-control compulsoryField start-date" type="date">
                                     </div>
-                                </td>
-                                <td>
                                     <div class="form-group">
+                                        <label>Expected date of end</label>
                                         <input name="research-projects-end-date-1" class="form-control compulsoryField end-date" type="date">
                                     </div>
                                 </td>
