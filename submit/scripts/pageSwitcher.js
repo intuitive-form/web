@@ -5,7 +5,8 @@ $( document ).ready(function() {
     $( ".next" ).click(function() {
         var compulsoryFields = checkCompulsoryFields($(this).parent());
         var connectedFields = checkConnectedFields($(this).parent());
-        if (compulsoryFields && connectedFields){
+        var dates = dateCheck($(this).parent());
+        if (compulsoryFields && connectedFields && dates){
             $(this).parent().hide();
             $("#"+(parseInt($(this).parent().attr('id')) + 1)).show();
         }
