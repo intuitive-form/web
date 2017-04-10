@@ -39,6 +39,11 @@ $(document).ready(function () {
                         text += "Courses:" + "\n" + data + "\n";
                         showData(text, form);
                     });
+                    requestName = "/grants/" + getInputValue("query2-unit-name");
+                    $.get(requestName, function (data) {
+                        text += "Grants:" + "\n" + data + "\n";
+                        showData(text, form);
+                    });
                     break;
                 case "3":
                     requestName = "/courses/" + getInputValue("query3-laboratory-name") + "/" + getInputValue("query3-initial-date") + "/" + getInputValue("query3-final-date");
