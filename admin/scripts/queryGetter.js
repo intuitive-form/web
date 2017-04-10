@@ -3,20 +3,22 @@
  */
 $(document).ready(function () {
     $(".get").click(function () {
-        var queryName = $(this).parents("form").attr("class").split("query")[1];
-        var text;
+        var form = $(this).parents("form");
+        var well = form.find(".well");
+        var queryName = form.attr("class").split("query")[1];
         var requestName;
         switch (queryName) {
-            case "query1":
+            case "1":
                 requestName = "pubs?year=" + $('[name="query1-year"]').val();
                 break;
-            case "query2":
+            case "2":
                 //requestName =
                 break;
         }
-        $.get(queryName, function (data) {
-            text = data;
+        $.get(requestName, function (data) {
+            well.hide();
+            well.html(data);
+            well.fadeIn();
         });
-        $(this).after("<div class='well'>" + text + "</div>")
     });
 });
