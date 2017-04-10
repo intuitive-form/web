@@ -25,6 +25,6 @@ function deleteRow() {
     $(row).remove();
     recountNumbers(sibling);
     if ($(sibling).parent().children().length == 1){
-        $(sibling).parent().find(".delete").hide();
+        $(sibling).parent().find(".delete").slice(-1).hide();
     }
 }
