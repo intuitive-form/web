@@ -14,7 +14,7 @@ $(document).ready(function () {
         var requestName;
         switch (queryName) {
             case "1":
-                requestName = "../pubs/" + getInputValue("query1-year");
+                requestName = "/pubs/" + getInputValue("query1-year");
                 break;
             case "2":
             case "3":
