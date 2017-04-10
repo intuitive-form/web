@@ -1,6 +1,11 @@
 /**
  * Created by Lena Lebedeva on 10.04.2017.
  */
+
+function getInputValue(name) {
+    return $("[name='" + name + "']").val();
+}
+
 $(document).ready(function () {
     $(".get").click(function () {
         var form = $(this).parents("form");
@@ -9,10 +14,11 @@ $(document).ready(function () {
         var requestName;
         switch (queryName) {
             case "1":
-                requestName = "../pubs/" + $('[name="query1-year"]').val();
+                requestName = "../pubs/" + getInputValue("query1-year");
                 break;
             case "2":
-                //requestName =
+            case "3":
+                requestName = "/courses/" + getInputValue("query3-laboratory-name") + "/" + getInputValue("query3-initial-date") + "/" + getInputValue("query3-final-date");
                 break;
         }
         $.get(requestName, function (data) {
