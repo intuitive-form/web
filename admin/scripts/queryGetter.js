@@ -45,7 +45,9 @@ $(document).ready(function () {
                     requestName = "/grants/" + getInputValue("query2-unit-name");
                     $.get(requestName, function (data) {
                         var array = data.split("\n");
-                        text[2] = "Grants:" + "\n" + array[0] + "\n" + array[1] + "\n" + array[3] + "\n" + array[4] + "\n" + array[5] + "\n" + array[7] + "\n";
+                        text[2] = "Grants:\n"
+                        for(var i = 0; i < array.length; i += 4)
+                            text[2] += array[i] + "\n"
                         showData(text.join(''), form);
                     });
                     break;
