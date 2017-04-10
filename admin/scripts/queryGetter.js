@@ -31,13 +31,13 @@ $(document).ready(function () {
                     requestName = "/head/" + getInputValue("query2-unit-name");
                     var text = "";
                     $.get(requestName, function (data) {
-                        text += data + "\n";
-                        showData(text);
+                        text += "Unit head:" + "\n" + data + "\n";
+                        showData(text, form);
                     });
-                    requestName = "/courses/" + getInputValue("query2-unit-name")
+                    requestName = "/courses/" + getInputValue("query2-unit-name");
                     $.get(requestName, function (data) {
-                        text += data + "\n";
-                        showData(text);
+                        text += "Courses:" + "\n" + data + "\n";
+                        showData(text, form);
                     });
                     break;
                 case "3":
