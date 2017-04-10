@@ -53,9 +53,13 @@ function test1() {
     setInputValue("courses-course-name-1","Computer Architecture");
     setInputValue("courses-semester-1", "Fall");
     setInputValue("courses-students-number-1", 129);
+    setInputValue("courses-start-date-1", "2016-09-01");
+    setInputValue("courses-end-date-1", "2016-11-20");
     setInputValue("courses-course-name-2","Pattern Recognition and Analysis");
     setInputValue("courses-level-2", "Master");
     setInputValue("courses-students-number-2", 57);
+    setInputValue("courses-start-date-2", "2016-01-01");
+    setInputValue("courses-end-date-2", "2016-05-07");
     setInputValue("examinations-course-name-1","Computer Architecture");
     setInputValue("examinations-semester-1", "Fall");
     setInputValue("examinations-students-number-1", 125);
