@@ -29,20 +29,24 @@ $(document).ready(function () {
                     break;
                 case "2":
                     requestName = "/head/" + getInputValue("query2-unit-name");
-                    var text = "";
+                    var text = [];
+                    text[0] = "";
+                    text[1] = "";
+                    text[2] = "";
                     $.get(requestName, function (data) {
-                        text += "Unit head:" + "\n" + data + "\n";
-                        showData(text, form);
+                        text[0] = "Unit head:" + "\n" + data + "\n";
+                        showData(text.join(''), form);
                     });
                     requestName = "/courses/" + getInputValue("query2-unit-name");
                     $.get(requestName, function (data) {
-                        text += "Courses:" + "\n" + data + "\n";
-                        showData(text, form);
+                        text[1] = "Courses:" + "\n" + data + "\n";
+                        showData(text.join(''), form);
                     });
                     requestName = "/grants/" + getInputValue("query2-unit-name");
                     $.get(requestName, function (data) {
-                        text += "Grants:" + "\n" + data + "\n";
-                        showData(text, form);
+                        var array = data.split("\n");
+                        text[2] = "Grants:" + "\n" + array[0] + "\n" + array[1] + "\n" + array[3] + "\n" + array[4] + "\n" + array[5] + "\n" + array[7] + "\n";
+                        showData(text.join(''), form);
                     });
                     break;
                 case "3":
