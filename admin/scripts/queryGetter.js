@@ -9,7 +9,7 @@ $(document).ready(function () {
         var requestName;
         switch (queryName) {
             case "1":
-                requestName = "pubs?year=" + $('[name="query1-year"]').val();
+                requestName = "../pubs/" + $('[name="query1-year"]').val();
                 break;
             case "2":
                 //requestName =
