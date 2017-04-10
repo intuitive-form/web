@@ -17,6 +17,7 @@ $(document).ready(function () {
         }
         $.get(requestName, function (data) {
             well.hide();
+            data = data.split("\n").join("<br />");
             well.html(data);
             well.fadeIn();
         });
