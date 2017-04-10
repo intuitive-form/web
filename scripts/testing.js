@@ -15,8 +15,14 @@ function fill(){
                     input.val(input.attr("name"));
                 }
                 else if (input.attr("type") == "date") {
-                    var rightNow = new Date(2016, Math.floor(Math.random() * 12), Math.floor(Math.random() * 31 + 1));
-                    input.val(rightNow.toISOString().slice(0, 10));
+                    var date;
+                    if (input.hasClass("end-date")){
+                        date = new Date(2016, 11, 31);
+                    }
+                    else {
+                        date = new Date(2016, Math.floor(Math.random() * 12), Math.floor(Math.random() * 30)+1);
+                    }
+                    input.val(date.toISOString().slice(0, 10));
                 }
             }
         });
