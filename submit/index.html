@@ -15,8 +15,9 @@
         <script type="text/javascript" src="scripts/buttonManager.js"></script>
         <script type="text/javascript" src="scripts/intFloorer.js"></script>
         <script type="text/javascript" src="../scripts/testing.js"></script>
-        <script type="text/javascript" src="../scripts/submitFieldsChecker.js"></script>
+        <script type="text/javascript" src="scripts/submitFieldsChecker.js"></script>
         <script type="text/javascript" src="../scripts/dateChecker.js"></script>
+        <script type="text/javascript" src="scripts/dataCollecter.js"></script>
         <style>
             .date {
                 //width: 200px;
@@ -83,7 +84,7 @@
                     <div class="well">
                         <h3>Courses taught *</h3>
                         <p class="help-block">Include all courses taught or co-taught by members of your unit.</p>
-                        <table class="table table-condensed level1">
+                        <table class="table table-condensed level1" id="courses">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -144,7 +145,7 @@
                         </table>
                         <h3>Examinations *</h3>
                         <p class="help-block">Include all examinations administered or co-administered by members of your unit.</p>
-                        <table class="level1 table table-condensed">
+                        <table class="level1 table table-condensed" id="examinations">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -194,7 +195,7 @@
                         </table>
                         <h3>Students supervised *</h3>
                         <p class="help-block">For each student, indicate student name and nature of work, e.g. bachelor thesis, master thesis, summer internship.</p>
-                        <table class="level1 table table-condensed">
+                        <table class="level1 table table-condensed" id="supervised students">
                             <thead>
                             <tr>
                                 <th>Student name</th>
@@ -223,7 +224,7 @@
                         </table>
                         <h3>Completed student reports *</h3>
                         <p class="help-block">For each report, indicate student name, title of report, as well as publication plans if any.</p>
-                        <table class="level1 table table-condensed">
+                        <table class="level1 table table-condensed" id="student-reports">
                             <thead>
                             <tr>
                                 <th>Student name</th>
@@ -258,7 +259,7 @@
                         </table>
                         <h3>Completed PhD theses</h3>
                         <p class="help-block">For each report, indicate student name, title of report, as well as publication plans if any.</p>
-                        <table class="level1 table table-condensed">
+                        <table class="level1 table table-condensed" id="phd-theses">
                             <thead>
                             <tr>
                                 <th>Student name</th>
@@ -302,7 +303,7 @@
                     <p class="text-danger">* Compulsory</p>
                     <div class="well">
                         <h3>Grants *</h3>
-                        <table class="level1 table table-condensed">
+                        <table class="level1 table table-condensed" id="grants">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -357,7 +358,7 @@
                         </table>
                         <h3>Research projects *</h3>
                         <p class="help-block">Include all significant research themes in which members of your unit are involved.</p>
-                        <table class="level1 table table-condensed">
+                        <table class="level1 table table-condensed" id="projects">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -378,7 +379,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <table class="level2 table table-condensed">
+                                    <table class="level2 table table-condensed" id="personnel">
                                             <thead>
                                             <tr>
                                                 <th>Name</th>
@@ -400,7 +401,7 @@
                                         </table>
                                 </td>
                                 <td>
-                                    <table class="level2 table table-condensed">
+                                    <table class="level2 table table-condensed" id="extra-personnel">
                                             <thead>
                                             <tr>
                                                 <th>Name</th>
@@ -446,7 +447,7 @@
                         </table>
                         <h3>Research collaborations</h3>
                         <p class="help-block"></p>
-                        <table class="level1 table table-condensed">
+                        <table class="level1 table table-condensed" id="collaborations">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -471,7 +472,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <table class="level2 table table-condensed">
+                                    <table class="level2 table table-condensed" id="contacts">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
@@ -506,7 +507,7 @@
                         </table>
                         <h3>Conference publications</h3>
                         <p class="help-block">Indicate all publications of which members of the unit are authors or coauthors.</p>
-                        <table class="level1 table table-condensed">
+                        <table class="level1 table table-condensed" id="conference-publications">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -525,7 +526,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <table class="level2 table table-condensed">
+                                    <table class="level2 table table-condensed" id="conference-authors">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
@@ -560,7 +561,7 @@
                         </table>
                         <h3>Journal publications</h3>
                         <p class="help-block">Indicate all publications of which members of the unit are authors or coauthors.</p>
-                        <table class="level1 table table-condensed">
+                        <table class="level1 table table-condensed" id="journal-publications">
                             <thead>
                             <tr>
                                 <th>#</th>
@@ -579,7 +580,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <table class="level2 table table-condensed">
+                                    <table class="level2 table table-condensed" id="journal-authors">
                                         <thead>
                                         <tr>
                                             <th>Name</th>
