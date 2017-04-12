@@ -17,8 +17,8 @@ function collectData() {
     for (var i = 0; i < $("#courses").find("tr").length - 1; i++){
         data.section2.courses[i] = {};
         data.section2.courses[i].name = getInputValue("courses-course-name-" + (i + 1));
-        data.section2.courses[i].semester = getInputValue("courses-course-semester-" + (i + 1));
-        data.section2.courses[i].level = getInputValue("courses-course-level-" + (i + 1));
+        data.section2.courses[i].semester = getInputValue("courses-semester-" + (i + 1));
+        data.section2.courses[i].level = getInputValue("courses-level-" + (i + 1));
         data.section2.courses[i].start_date = getInputValue("courses-start-date-" + (i + 1));
         data.section2.courses[i].end_date = getInputValue("courses-end-date-" + (i + 1));
     }
@@ -26,7 +26,7 @@ function collectData() {
     for (var i = 0; i < $("#examinations").find("tr").length - 1; i++){
         data.section2.examinations[i] = {};
         data.section2.examinations[i].course_name = getInputValue("examinations-course-name-" + (i + 1));
-        data.section2.examinations[i].semester = getInputValue("examinations-course-semester-" + (i + 1));
+        data.section2.examinations[i].semester = getInputValue("examinations-semester-" + (i + 1));
         data.section2.examinations[i].kind = getInputValue("examinations-exam-kind-" + (i + 1));
         data.section2.examinations[i].students_number = getInputValue("examinations-students-number-" + (i + 1));
     }
