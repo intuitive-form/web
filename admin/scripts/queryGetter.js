@@ -22,10 +22,37 @@ $(document).ready(function () {
             var requestName;
             switch (queryName) {
                 case "1":
-                    requestName = "/pubs/" + getInputValue("query1-year");
-                    $.get(requestName, function (data) {
-                        showData(data, form);
-                    });
+                    $.post("/pubs",
+                        { year: getInputValue("query1-year") },
+                        function (data) {
+                            var obj;
+                            var output = "";
+                            console.log(data);
+                            try {
+                                obj = JSON.parse(data);
+                            } catch (e) {
+                                showData("Server error", form)
+                                return;
+                            }
+                            if(!(obj.journal_pubs instanceof Array) || !(obj.conf_pubs instanceof Array)) {
+                                showData("Server error", form)
+                                return;
+                            }
+                            output += "<h3>Journal publications</h3>"
+                            for (i in obj.journal_pubs) {
+                                if(typeof obj.journal_pubs[i] !== "string")
+                                    continue;
+                                output += obj.journal_pubs[i] + "<br/>";
+                            }
+                            output += "<h3>Conference publications</h3>"
+                            for (i in obj.conf_pubs) {
+                                if(typeof obj.conf_pubs[i] !== "string")
+                                    continue;
+                                output += obj.conf_pubs[i] + "<br/>";
+                            }
+                            showData(output, form);
+                        }
+                    );
                     break;
                 case "2":
                     requestName = "/head/" + getInputValue("query2-unit-name");
@@ -51,7 +78,7 @@ $(document).ready(function () {
                         showData(text.join(''), form);
                     });
                     break;
-                case "3":
+                case "3":   
                     requestName = "/courses/" + getInputValue("query3-laboratory-name") + "/" + getInputValue("query3-initial-date") + "/" + getInputValue("query3-final-date");
                     $.get(requestName, function (data) {
                         showData(data, form);
