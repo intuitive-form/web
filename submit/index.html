@@ -25,6 +25,9 @@
             .page {
                 margin-bottom: 30px;
             }
+            .add {
+                display: inline;
+            }
         </style>
     </head>
     <body>
@@ -91,8 +94,9 @@
                                 <th>Course name</th>
                                 <th>Semester</th>
                                 <th>Level</th>
-                                <th>Approximate number of students</th>
-                                <th>Dates</th>
+                                <th>Number of students</th>
+                                <th>Date of start</th>
+                                <th>Date of end</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -121,28 +125,30 @@
                                         </select>
                                     </div>
                                 </td>
-                                <td>
+                                <td class="col-sm-2 ">
                                     <div class="form-group">
                                         <input name="courses-students-number-1" class="compulsoryField form-control int" type="number">
                                     </div>
                                 </td>
-                                <td>
+                                <td class="col-sm-2">
                                     <div class="form-group">
-                                        <label>Date of start</label>
-                                        <input name="courses-start-date-1" class="form-control compulsoryField start-date" type="date">
+                                        <input name="courses-end-date-1" class="form-control compulsoryField end-date" type="date">
                                     </div>
+                                </td>
+                                <td class="col-sm-2">
                                     <div class="form-group">
-                                        <label>Expected date of end</label>
                                         <input name="courses-end-date-1" class="form-control compulsoryField end-date" type="date">
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                         <h3>Examinations *</h3>
                         <p class="help-block">Include all examinations administered or co-administered by members of your unit.</p>
                         <table class="level1 table table-condensed" id="examinations">
@@ -152,7 +158,7 @@
                                 <th>Course name</th>
                                 <th>Semester</th>
                                 <th>Kind of exam</th>
-                                <th>Approximate number of students</th>
+                                <th>Number of students</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -187,12 +193,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                    <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                         <h3>Students supervised *</h3>
                         <p class="help-block">For each student, indicate student name and nature of work, e.g. bachelor thesis, master thesis, summer internship.</p>
                         <table class="level1 table table-condensed" id="supervised students">
@@ -216,12 +224,15 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+
+                    <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                         <h3>Completed student reports *</h3>
                         <p class="help-block">For each report, indicate student name, title of report, as well as publication plans if any.</p>
                         <table class="level1 table table-condensed" id="student-reports">
@@ -251,12 +262,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                         <h3>Completed PhD theses</h3>
                         <p class="help-block">For each report, indicate student name, title of report, as well as publication plans if any.</p>
                         <table class="level1 table table-condensed" id="phd-theses">
@@ -286,12 +299,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                    <div class="row">
+                        <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                    </div>
                     </div>
                     <button type="button" class="previous btn btn-default">Previous</button>
                     <button type="button" class="next btn btn-default">Next</button>
@@ -350,12 +365,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                         <h3>Research projects *</h3>
                         <p class="help-block">Include all significant research themes in which members of your unit are involved.</p>
                         <table class="level1 table table-condensed" id="projects">
@@ -394,11 +411,13 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <button class="add btn btn-default">Add more</button>
                                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                                 </td>
                                             </tbody>
                                         </table>
+                                    <div class="row">
+                                        <div class="col-sm-12"><button class="add btn btn-default pull-right">Add more</button></div>
+                                    </div>
                                 </td>
                                 <td>
                                     <table class="level2 table table-condensed" id="extra-personnel">
@@ -416,12 +435,14 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <button class="add btn btn-default">Add more</button>
                                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                                 </td>
                                             </tr>
                                             </tbody>
                                     </table>
+                                    <div class="row">
+                                        <div class="col-sm-12"><button class="add btn btn-default pull-right">Add more</button></div>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -439,12 +460,15 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                         <h3>Research collaborations</h3>
                         <p class="help-block"></p>
                         <table class="level1 table table-condensed" id="collaborations">
@@ -487,11 +511,13 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button class="add btn btn-default">Add more</button>
                                                 <button class="delete btn btn-danger" style="display: none">X</button>
                                             </td>
                                         </tbody>
                                     </table>
+                                    <div class="row">
+                                        <div class="col-sm-12"><button class="add btn btn-default pull-right">Add more</button></div>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -499,13 +525,15 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
-                        <h3>Conference publications</h3>
+
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>                   <h3>Conference publications</h3>
+                        </div>
                         <p class="help-block">Indicate all publications of which members of the unit are authors or coauthors.</p>
                         <table class="level1 table table-condensed" id="conference-publications">
                             <thead>
@@ -541,11 +569,13 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button class="add btn btn-default">Add more</button>
                                                 <button class="delete btn btn-danger" style="display: none">X</button>
                                             </td>
                                         </tbody>
                                     </table>
+                                    <div class="row">
+                                        <div class="col-sm-12"><button class="add btn btn-default pull-right">Add more</button></div>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -553,12 +583,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                         <h3>Journal publications</h3>
                         <p class="help-block">Indicate all publications of which members of the unit are authors or coauthors.</p>
                         <table class="level1 table table-condensed" id="journal-publications">
@@ -595,11 +627,13 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button class="add btn btn-default">Add more</button>
                                                 <button class="delete btn btn-danger" style="display: none">X</button>
                                             </td>
                                         </tbody>
                                     </table>
+                                    <div class="row">
+                                        <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -607,18 +641,18 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                     </div>
                     <button type="button" class="previous btn btn-default">Previous</button>
-                    <!--<button type="button" class="next btn btn-default">Next</button>-->
-                    <input type="submit" class="btn btn-success submit" value="Submit">
+                    <button type="button" class="next btn btn-default">Next</button>
                 </div>
-                <!--
                 <div class="page" id="5" style="display: none">
                     <h2>Section 4: technology transfer
                         <small>This section covers patents, licenses and other technology transfer activities</small>
@@ -647,12 +681,15 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                         <h3>IP licensing (software or others)</h3>
                         <p class="help-block">List licenses granted.</p>
                         <table class="level1 table table-condensed">
@@ -670,12 +707,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                     </div>
                     <button type="button" class="previous btn btn-default">Previous</button>
                     <button type="button" class="next btn btn-default">Next</button>
@@ -722,11 +761,13 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <button class="add btn btn-default">Add more</button>
                                                 <button class="delete btn btn-danger" style="display: none">X</button>
                                             </td>
                                         </tbody>
                                     </table>
+                                    <div class="row">
+                                        <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="form-group">
@@ -744,12 +785,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                         <h3>Memberships</h3>
                         <p class="help-block">Membership in academies, international working groups (for example IFIP or ACM), standards committees (e.g. ISO, Ecma) etc.</p>
                         <table class="level1 table table-condensed">
@@ -773,12 +816,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                         <h3>Prizes</h3>
                         <p class="help-block">List prizes received during reporting period. For each item, indicate recipient, name of prize, granting institution, date.</p>
                         <table class="level1 table table-condensed level1">
@@ -814,12 +859,14 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="add btn btn-default">Add more</button>
                                     <button class="delete btn btn-danger" style="display: none">X</button>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
                     </div>
                     <button type="button" class="previous btn btn-default">Previous</button>
                     <button type="button" class="next btn btn-default">Next</button>
@@ -835,7 +882,7 @@
                 </div>
                 <button type="button" class="previous btn btn-default">Previous</button>
                 <input type="submit" class="btn btn-success" value="Submit">
-            </div>-->
+            </div>
             </div>
         </form>
     </body>

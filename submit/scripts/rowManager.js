@@ -8,14 +8,15 @@ function recountNumbers(row) {
     }
 }
 function addRow() {
-    var row = $(this).parents("tr")[0];
+    var row = $(this).parents(".row").prev("table").children().last().children().last();
+    console.log(row)
     if ($(row).parent().children().length == 1){
-        $(this).parent().find(".delete").show();
+        $(row).find(".delete").show();
     }
     var newRow = $(row).clone();
     $(newRow).find("input").val("");
     $(row).after(newRow);
-    setAddButtons($(newRow).find(".add"));
+    //setAddButtons($(newRow).find(".add"));
     setDeleteButtons($(newRow).find(".delete"));
     recountNumbers(newRow);
 }
