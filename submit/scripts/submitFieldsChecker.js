@@ -1,6 +1,9 @@
 /**
  * Created by Lena Lebedeva on 07.04.2017.
  */
+function getAlertBlock(type, head, message) {
+    return "<div class='col-sm-3'></div><div class='alert col-sm-6 alert-" + type + "'><strong>" + head + "</strong> " + message + "</div><div class='col-sm-3'></div>"
+}
 function checkData(form) {
     var compulsoryFields = checkCompulsoryFields($(form));
     var connectedFields = checkConnectedFields($(form));
@@ -11,12 +14,13 @@ $( document ).ready(function(){
     $("form").submit(function () {
         event.preventDefault();
         if (checkData($(this))) {
-            $.post("submit", { "value": JSON.stringify(collectData()) }).done(sendHandler);
+            var form = $(this);
+            $.post("submit", { "value": JSON.stringify(collectData()) }).done(function(data){sendHandler(data, form);});
         }
     });
 });
 
-function sendHandler(data) {
+function sendHandler(data, form) {
     var reply;
     try {
         reply = JSON.parse(data);
@@ -26,14 +30,18 @@ function sendHandler(data) {
     }
     switch (reply.status) {
         case "ok":
-            $(this).append("<div class='alert alert-success'><strong>Success!</strong> Form is successfully submitted.</div>");
+            form.append(getAlertBlock("success", "Success!", "Form is successfully sent"));
             break;
         case "error":
             switch (reply.reason) {
                 case "unit exists":
-                    $(this).append("<div class='alert alert-danger'><strong>Error!</strong> Unit already exists.</div>");
+                    form.parent().append(getAlertBlock("danger", "Error!", "Unit already exists."));
+                    break;
+                default:
+                    form.parent().append(getAlertBlock("danger", "Error!", "Some error happened."));
                     break;
             }
             break;
         }
+        form.hide();
 }
