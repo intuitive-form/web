@@ -21,6 +21,7 @@ function collectData() {
         data.section2.courses[i].level = getInputValue("courses-level-" + (i + 1));
         data.section2.courses[i].start_date = getInputValue("courses-start-date-" + (i + 1));
         data.section2.courses[i].end_date = getInputValue("courses-end-date-" + (i + 1));
+        data.section2.examinations[i].students_number = getInputValue("courses-students-number-" + (i + 1));
     }
     data.section2.examinations = [];
     for (var i = 0; i < $("#examinations").find("tr").length - 1; i++){
