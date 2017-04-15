@@ -98,8 +98,7 @@ function collectData() {
         data.section3.conference_publications[i].title = getInputValue("conference-publications-title-" + (i + 1));
         data.section3.conference_publications[i].authors = [];
         for (var j = 0; j < $("#conference-authors").find("tr").length - 1; j++){
-            data.section3.conference_publications[i].authors[j] = {};
-            data.section3.conference_publications[i].authors[j].name = getInputValue("conference-publications-author-name-" + (j + 1) + "-" + (i + 1));
+            data.section3.conference_publications[i].authors[j] = getInputValue("conference-publications-author-name-" + (j + 1) + "-" + (i + 1));
         }
         data.section3.conference_publications[i].date = getInputValue("conference-publications-date-" + (i + 1));
     }
@@ -109,8 +108,7 @@ function collectData() {
         data.section3.journal_publications[i].title = getInputValue("journal-publications-title-" + (i + 1));
         data.section3.journal_publications[i].authors = [];
         for (var j = 0; j < $("#journal-authors").find("tr").length - 1; j++){
-            data.section3.journal_publications[i].authors[j] = {};
-            data.section3.journal_publications[i].authors[j].name = getInputValue("journal-publications-author-name-" + (j + 1) + "-" + (i + 1));
+            data.section3.journal_publications[i].authors[j] = getInputValue("journal-publications-author-name-" + (j + 1) + "-" + (i + 1));
         }
         data.section3.journal_publications[i].date = getInputValue("journal-publications-date-" + (i + 1));
     }
