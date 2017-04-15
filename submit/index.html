@@ -729,7 +729,7 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
+                                <th>Paper title</th>
                                 <th>Authors</th>
                                 <th>Awarding conference or journal</th>
                                 <th>Exact wording of award</th>
@@ -799,6 +799,7 @@
                             <thead>
                             <tr>
                                 <th>Name of member</th>
+                                <th>Academic Organization/Institution</th>
                                 <th>Date of membership</th>
                                 <th></th>
                             </tr>
@@ -808,6 +809,11 @@
                                 <td>
                                     <div class="form-group">
                                         <input name="memberships-name-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="memberships-organization-1" class="form-control connectedField" type="text">
                                     </div>
                                 </td>
                                 <td>
@@ -872,7 +878,46 @@
                     <button type="button" class="next btn btn-default">Next</button>
                 </div>
                 <div class="page" id="7" style="display: none">
-                <h2>Section 6: other information
+                    <h2>Section 6: outside activities
+                        <small>This section covers external activities relevant to Innopolis University.</small>
+                    </h2>
+                    <div class="well">
+                        <h3>Industry collaborations</h3>
+                        <table class="level1 table table-condensed">
+                            <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Nature of collaboration</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="industry-collaborations-company-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-group">
+                                        <input name="industry-collaborations-nature-of-collaboration-1" class="form-control connectedField" type="text">
+                                    </div>
+                                </td>
+                                <td>
+                                    <button class="delete btn btn-danger" style="display: none">X</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-12"><button class="pull-right add btn btn-default">Add more</button></div>
+                        </div>
+                    </div>
+                    <button type="button" class="previous btn btn-default">Previous</button>
+                    <button type="button" class="next btn btn-default">Next</button>
+                </div>
+                <div class="page" id="8" style="display: none">
+                <h2>Section 7: other information
                     <small>This section covers anything not included in previous sections.</small>
                 </h2>
                 <div class="well">
