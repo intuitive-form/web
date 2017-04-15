@@ -9,15 +9,14 @@ function recountNumbers(row) {
 }
 function addRow() {
     var row = $(this).parents(".row").prev("table").children().last().children().last();
-    console.log(row)
     if ($(row).parent().children().length == 1){
-        $(row).find(".delete").show();
+        $(row).children().last().find(".delete").show();
     }
     var newRow = $(row).clone();
     $(newRow).find("input").val("");
     $(row).after(newRow);
     //setAddButtons($(newRow).find(".add"));
-    setDeleteButtons($(newRow).find(".delete"));
+    setDeleteButtons($(newRow).children().last().find(".delete"));
     recountNumbers(newRow);
 }
 function deleteRow() {

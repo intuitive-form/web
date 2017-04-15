@@ -2,6 +2,7 @@
  * Created by Lena Lebedeva on 31.03.2017.
  * F12 -> Console -> fill() or unfill()
  */
+test1 = {}
 function fill(){
     $(document).each(function () {
         var page = $(this);
@@ -46,53 +47,97 @@ function submit() {
 function setInputValue(name, value) {
     $("[name='" + name + "']").val(value);
 }
-function test1() {
-    $( ".add" ).trigger( "click" );
-    setInputValue("unit-name", "Robotics Lab");
-    setInputValue("head-name", "Nikolaos Mavridis");
-    setInputValue("courses-course-name-1","Computer Architecture");
-    setInputValue("courses-semester-1", "Fall");
-    setInputValue("courses-students-number-1", 129);
-    setInputValue("courses-start-date-1", "2016-09-01");
-    setInputValue("courses-end-date-1", "2016-11-20");
-    setInputValue("courses-course-name-2","Pattern Recognition and Analysis");
-    setInputValue("courses-level-2", "Master");
-    setInputValue("courses-students-number-2", 57);
-    setInputValue("courses-start-date-2", "2016-01-01");
-    setInputValue("courses-end-date-2", "2016-05-07");
-    setInputValue("examinations-course-name-1","Computer Architecture");
-    setInputValue("examinations-semester-1", "Fall");
-    setInputValue("examinations-students-number-1", 125);
-    setInputValue("examinations-course-name-2", "Pattern Recognition and Analysis");
-    setInputValue("examinations-students-number-2", 50);
-    setInputValue("students-supervised-name-1", "Ivan Ivanov");
-    setInputValue("students-supervised-work-nature-1", "summer internship");
-    setInputValue("students-supervised-name-2", "Petr Sidorov");
-    setInputValue("students-supervised-work-nature-2", "master thesis");
-    setInputValue("completed-student-reports-name-1", "Ivan Ivanov");
-    setInputValue("completed-student-reports-title-1", "A parallelized and streamlined vision front-end for tabletop robots");
-    setInputValue("completed-student-reports-name-2", "Petr Sidorov");
-    setInputValue("completed-student-reports-title-2", "Quantifying GSM performance through the flock of birds sensor");
-    setInputValue("grants-title-1", "Verifying Deep Mathematical Properties of AI Systems");
-    setInputValue("grants-granting-agency-1", "USAID");
-    setInputValue("period-start-1", "2016-04-02");
-    setInputValue("period-end-1", "2017-10-11");
-    setInputValue("grants-amount-1", 100);
-    setInputValue("grants-title-2", "How to Build Ethics into Robust Artificial Intelligence");
-    setInputValue("grants-granting-agency-2", "CNCS");
-    setInputValue("period-start-2", "2016-08-13");
-    setInputValue("period-end-2", "2017-12-01");
-    setInputValue("grants-amount-2", 200);
-    setInputValue("research-projects-title-1", "Smart MutHaf: 3D Models, Motion Capture, and Animations towards an Interactive Online Museum of the UAE");
-    setInputValue("research-projects-personnel-involved-name-1-1", "Hend Al Tair");
-    setInputValue("research-projects-personnel-involved-name-2-1", "Amna Yammahi");
-    setInputValue("research-projects-start-date-1", "2016-03-16");
-    setInputValue("research-projects-end-date-1", "2016-09-10");
-    setInputValue("research-projects-financing-sources-1", "UAEU");
-    setInputValue("research-projects-title-2", "Human and Cat Face Detection");
-    setInputValue("research-projects-personnel-involved-name-1-2", "Alia Neyadi");
-    setInputValue("research-projects-personnel-involved-name-2-2", "Noura Kuwaiti");
-    setInputValue("research-projects-start-date-2", "2016-04-01");
-    setInputValue("research-projects-end-date-2", "2016-12-20");
-    setInputValue("research-projects-financing-sources-2", "UAEU");
+
+function newRow(table) {
+    table.next().find(".add").trigger("click");
+}
+
+function test(data) {
+    setInputValue("unit-name", data.section1.unit_name);
+    setInputValue("head-name", data.section1.head_name);
+    setInputValue("reporting-period-start", data.section1.reporting_period_start);
+    setInputValue("reporting-period-end", data.section1.reporting_period_end);
+    for (var i = 0; i < data.section2.courses.length; i++){
+        if (i > 0) { newRow($("#courses"));}
+        setInputValue("courses-course-name-" + (i + 1), data.section2.courses[i].name);
+        setInputValue("courses-semester-" + (i + 1), data.section2.courses[i].semester);
+        setInputValue("courses-level-" + (i + 1), data.section2.courses[i].level);
+        setInputValue("courses-start-date-" + (i + 1), data.section2.courses[i].start_date);
+        setInputValue("courses-end-date-" + (i + 1), data.section2.courses[i].end_date);
+        setInputValue("courses-students-number-" + (i + 1), data.section2.courses[i].students_number);
+    }
+    for (var i = 0; i < data.section2.examinations.length; i++){
+        if (i > 0) { newRow($("#examinations")); }
+        setInputValue("examinations-course-name-" + (i + 1), data.section2.examinations[i].course_name);
+        setInputValue("examinations-semester-" + (i + 1), data.section2.examinations[i].semester);
+        setInputValue("examinations-exam-kind-" + (i + 1), data.section2.examinations[i].kind);
+        setInputValue("examinations-students-number-" + (i + 1), data.section2.examinations[i].students_number);
+    }
+    for (var i = 0; i < data.section2.students.length; i++){
+        if (i > 0) { newRow($("#supervised-students")); }
+        setInputValue("students-supervised-name-" + (i + 1), data.section2.students[i].name);
+        setInputValue("students-supervised-work-nature-" + (i + 1), data.section2.students[i].nature_of_work);
+    }
+    for (var i = 0; i < data.section2.student_reports.length; i++){
+        if (i > 0) { newRow($("#student-reports")); }
+        setInputValue("completed-student-reports-name-" + (i + 1), data.section2.student_reports[i].student_name);
+        setInputValue("completed-student-reports-title-" + (i + 1), data.section2.student_reports[i].title);
+        setInputValue("completed-student-reports-publication-plans-" + (i + 1), data.section2.student_reports[i].plans);
+    }
+    for (var i = 0; i < data.section2.phd_reports.length; i++){
+        if (i > 0) { newRow($("#phd-theses")); }
+        setInputValue("completed-PhD-theses-name-" + (i + 1), data.section2.phd_reports[i].student_name);
+        setInputValue("completed-PhD-theses-title-" + (i + 1), data.section2.phd_reports[i].title);
+        setInputValue("completed-PhD-theses-publication-plans-" + (i + 1), data.section2.phd_reports[i].plans);
+    }
+    for (var i = 0; i < data.section3.grants.length; i++){
+        if (i > 0) { newRow($("#grants")); }
+        setInputValue("grants-title-" + (i + 1), data.section3.grants[i].title);
+        setInputValue("grants-granting-agency-" + (i + 1), data.section3.grants[i].agency);
+        setInputValue("period-start-" + (i + 1), data.section3.grants[i].period_start);
+        setInputValue("period-end-" + (i + 1), data.section3.grants[i].period_end);
+        setInputValue("grants-continuation-" + (i + 1));data.section3.grants[i].amount
+        setInputValue("grants-amount-" + (i + 1), data.section3.grants[i].continuation);
+    }
+    for (var i = 0; i < data.section3.projects.length; i++){
+        if (i > 0) { newRow($("#projects")); }
+        setInputValue("research-projects-title-" + (i + 1), data.section3.projects[i].title);
+        for (var j = 0; j < data.section3.projects.personnel.length; j++){
+            if (i > 0) { newRow($("#personnel")); }
+            setInputValue("research-projects-personnel-involved-name-" + (j + 1) + "-" + (i + 1), data.section3.projects[i].personnel[j].name);
+        }
+        for (var j = 0; j < data.section3.projects[i].extra_personnel.length; j++){
+            if (i > 0) { newRow($("#extra-personnel")); }
+            setInputValue("research-projects-extra-personnel-involved-name-" + (j + 1) + "-" + (i + 1), data.section3.projects[i].extra_personnel[j].name);
+        }
+        setInputValue("research-projects-start-date-" + (i + 1), data.section3.projects[i].start_date);
+        setInputValue("research-projects-end-date-" + (i + 1), data.section3.projects[i].end_date);
+        setInputValue("research-projects-financing-sources-" + (i + 1), data.section3.projects[i].financing);
+    }
+    for (var i = 0; i < data.section3.collaborations.length; i++){
+        if (i > 0) { newRow($("#collaborations")); }
+        setInputValue("research-collaboration-country-" + (i + 1), data.section3.collaborations[i].country);data.section3.collaborations[i].name
+        setInputValue("research-collaboration-name-" + (i + 1));
+        for (var j = 0; j < data.section3.collaborations[i].contacts.length; j++){
+            if (i > 0) { newRow($("#contacts")); }
+            setInputValue("research-collaboration-contracts-name-" + (j + 1) + "-" + (i + 1), data.section3.collaborations[i].contacts[j].name);
+        }
+        setInputValue("research-collaboration-nature-" + (i + 1), data.section3.collaborations[i].nature);
+    }
+    for (var i = 0; i < data.section3.conference_publications.length; i++){
+        if (i > 0) { newRow($("#conference-publications")); }
+        setInputValue("conference-publications-title-" + (i + 1), data.section3.conference_publications[i].title);
+        for (var j = 0; j < data.section3.conference_publications[i].authors.length; j++){
+            if (i > 0) { newRow($("#conference-authors")); }
+            setInputValue("conference-publications-author-name-" + (j + 1) + "-" + (i + 1), data.section3.conference_publications[i].authors[j]);
+        }
+        setInputValue("conference-publications-date-" + (i + 1), data.section3.conference_publications[i].date);
+    }
+    for (var i = 0; i < data.section3.journal_publications.length; i++){
+        setInputValue("journal-publications-title-" + (i + 1), data.section3.journal_publications[i].title);
+        for (var j = 0; j < data.section3.journal_publications[i].authors.length; j++){
+            setInputValue("journal-publications-author-name-" + (j + 1) + "-" + (i + 1), data.section3.journal_publications[i].authors[j]);
+        }
+        setInputValue("journal-publications-date-" + (i + 1), data.section3.journal_publications[i].date);
+    }
 }

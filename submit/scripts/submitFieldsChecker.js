@@ -30,7 +30,7 @@ function sendHandler(data, form) {
     }
     switch (reply.status) {
         case "ok":
-            form.append(getAlertBlock("success", "Success!", "Form is successfully sent"));
+            form.parent().append(getAlertBlock("success", "Success!", "Form is successfully sent"));
             break;
         case "error":
             switch (reply.reason) {

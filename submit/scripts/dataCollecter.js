@@ -14,7 +14,7 @@ function collectData() {
     data.section1.reporting_period_end = getInputValue("reporting-period-end");
     data.section2 = {};
     data.section2.courses = [];
-    for (var i = 0; i < $("#courses").find("tr").length - 1; i++){
+    for (var i = 0; i < $("#courses").children().children("tr").length - 1; i++){
         data.section2.courses[i] = {};
         data.section2.courses[i].name = getInputValue("courses-course-name-" + (i + 1));
         data.section2.courses[i].semester = getInputValue("courses-semester-" + (i + 1));
@@ -24,7 +24,7 @@ function collectData() {
         data.section2.courses[i].students_number = getInputValue("courses-students-number-" + (i + 1));
     }
     data.section2.examinations = [];
-    for (var i = 0; i < $("#examinations").find("tr").length - 1; i++){
+    for (var i = 0; i < $("#examinations").children().children("tr").length - 1; i++){
         data.section2.examinations[i] = {};
         data.section2.examinations[i].course_name = getInputValue("examinations-course-name-" + (i + 1));
         data.section2.examinations[i].semester = getInputValue("examinations-semester-" + (i + 1));
@@ -32,20 +32,20 @@ function collectData() {
         data.section2.examinations[i].students_number = getInputValue("examinations-students-number-" + (i + 1));
     }
     data.section2.students = [];
-    for (var i = 0; i < $("#supervised-students").find("tr").length - 1; i++){
+    for (var i = 0; i < $("#supervised-students").children().children("tr").length - 1; i++){
         data.section2.students[i] = {};
         data.section2.students[i].name = getInputValue("students-supervised-name-" + (i + 1));
         data.section2.students[i].nature_of_work = getInputValue("students-supervised-work-nature-" + (i + 1));
     }
     data.section2.student_reports = []
-    for (var i = 0; i < $("#student-reports").find("tr").length - 1; i++){
+    for (var i = 0; i < $("#student-reports").children().children("tr").length - 1; i++){
         data.section2.student_reports[i] = {};
         data.section2.student_reports[i].student_name = getInputValue("completed-student-reports-name-" + (i + 1));
         data.section2.student_reports[i].title = getInputValue("completed-student-reports-title-" + (i + 1));
         data.section2.student_reports[i].plans = getInputValue("completed-student-reports-publication-plans-" + (i + 1));
     }
     data.section2.phd_reports = []
-    for (var i = 0; i < $("#phd-reports").find("tr").length - 1; i++){
+    for (var i = 0; i < $("#phd-theses").children().children("tr").length - 1; i++){
         data.section2.phd_reports[i] = {};
         data.section2.phd_reports[i].student_name = getInputValue("completed-PhD-theses-name-" + (i + 1));
         data.section2.phd_reports[i].title = getInputValue("completed-PhD-theses-title-" + (i + 1));
@@ -53,7 +53,7 @@ function collectData() {
     }
     data.section3 = {};
     data.section3.grants = [];
-    for (var i = 0; i < $("#grants").find("tr").length - 1; i++){
+    for (var i = 0; i < $("#grants").children().children("tr").length - 1; i++){
         data.section3.grants[i] = {};
         data.section3.grants[i].title = getInputValue("grants-title-" + (i + 1));
         data.section3.grants[i].agency = getInputValue("grants-granting-agency-" + (i + 1));
@@ -63,16 +63,16 @@ function collectData() {
         data.section3.grants[i].amount = getInputValue("grants-amount-" + (i + 1));
     }
     data.section3.projects = [];
-    for (var i = 0; i < $("#projects").find("tr").length - 1; i++){
+    for (var i = 0; i < $("#projects").children().children("tr").length - 1; i++){
         data.section3.projects[i] = {};
         data.section3.projects[i].title = getInputValue("research-projects-title-" + (i + 1));
         data.section3.projects[i].personnel = [];
-        for (var j = 0; j < $("#personnel").find("tr").length - 1; j++){
+        for (var j = 0; j < $("#personnel").children().children("tr").length - 1; j++){
             data.section3.projects[i].personnel[j] = {};
             data.section3.projects[i].personnel[j].name = getInputValue("research-projects-personnel-involved-name-" + (j + 1) + "-" + (i + 1));
         }
         data.section3.projects[i].extra_personnel = [];
-        for (var j = 0; j < $("#extra-personnel").find("tr").length - 1; j++){
+        for (var j = 0; j < $("#extra-personnel").children().children("tr").length - 1; j++){
             data.section3.projects[i].extra_personnel[j] = {};
             data.section3.projects[i].extra_personnel[j].name = getInputValue("research-projects-extra-personnel-involved-name-" + (j + 1) + "-" + (i + 1));
         }
@@ -81,36 +81,85 @@ function collectData() {
         data.section3.projects[i].financing = getInputValue("research-projects-financing-sources-" + (i + 1));
     }
     data.section3.collaborations = [];
-    for (var i = 0; i < $("#collaborations").find("tr").length - 1; i++){
+    for (var i = 0; i < $("#collaborations").children().children("tr").length - 1; i++){
         data.section3.collaborations[i] = {};
         data.section3.collaborations[i].country = getInputValue("research-collaboration-country-" + (i + 1));
         data.section3.collaborations[i].name = getInputValue("research-collaboration-name-" + (i + 1));
         data.section3.collaborations[i].contacts = [];
-        for (var j = 0; j < $("#contacts").find("tr").length - 1; j++){
+        for (var j = 0; j < $("#contacts").children().children("tr").length - 1; j++){
             data.section3.collaborations[i].contacts[j] = {};
             data.section3.collaborations[i].contacts[j].name = getInputValue("research-collaboration-contracts-name-" + (j + 1) + "-" + (i + 1));
         }
         data.section3.collaborations[i].nature = getInputValue("research-collaboration-nature-" + (i + 1));
     }
     data.section3.conference_publications = [];
-    for (var i = 0; i < $("#conference-publications").find("tr").length - 1; i++){
+    for (var i = 0; i < $("#conference-publications").children().children("tr").length - 1; i++){
         data.section3.conference_publications[i] = {};
         data.section3.conference_publications[i].title = getInputValue("conference-publications-title-" + (i + 1));
         data.section3.conference_publications[i].authors = [];
-        for (var j = 0; j < $("#conference-authors").find("tr").length - 1; j++){
-            data.section3.conference_publications[i].authors[j] = getInputValue("conference-publications-author-name-" + (j + 1) + "-" + (i + 1));
+        for (var j = 0; j < $("#conference-authors").children().children("tr").length - 1; j++){
+            data.section3.conference_publications[i].authors[j] = getInputValue("conference-publications-author-" + (j + 1) + "-" + (i + 1));
         }
         data.section3.conference_publications[i].date = getInputValue("conference-publications-date-" + (i + 1));
     }
     data.section3.journal_publications = [];
-    for (var i = 0; i < $("#journal-publications").find("tr").length - 1; i++){
+    for (var i = 0; i < $("#journal-publications").children().children("tr").length - 1; i++){
         data.section3.journal_publications[i] = {};
         data.section3.journal_publications[i].title = getInputValue("journal-publications-title-" + (i + 1));
         data.section3.journal_publications[i].authors = [];
-        for (var j = 0; j < $("#journal-authors").find("tr").length - 1; j++){
-            data.section3.journal_publications[i].authors[j] = getInputValue("journal-publications-author-name-" + (j + 1) + "-" + (i + 1));
+        for (var j = 0; j < $("#journal-authors").children().children("tr").length - 1; j++){
+            data.section3.journal_publications[i].authors[j] = getInputValue("journal-publications-author-" + (j + 1) + "-" + (i + 1));
         }
         data.section3.journal_publications[i].date = getInputValue("journal-publications-date-" + (i + 1));
     }
+    data.section4 = {};
+    data.section4.patents = [];
+    for (var i = 0; i < $("#patents").children().children("tr").length - 1; i++){
+        data.section4.patents[i] = {};
+        data.section4.patents[i].title = getInputValue("patents-title-" + (i + 1));
+        data.section4.patents[i].country = getInputValue("patents-country-" + (i + 1));
+    }
+    data.section4.licensing = []
+    for (var i = 0; i < $("#licensing").children().children("tr").length - 1; i++){
+        data.section4.licensing[i] = {}
+        data.section4.licensing[i].title = getInputValue("licenses-title-" + (i + 1));
+    }
+    data.section5 = {};
+    data.section5.paper_awards = [];
+    for (var i = 0; i < $("#paper-awards").children().children("tr").length - 1; i++){
+        data.section5.paper_awards[i] = {};
+        data.section5.paper_awards[i].title = getInputValue("paper-awards-title-" + (i + 1));
+        data.section5.paper_awards[i].authors = [];
+        for (var j = 0; j < $("#paper-authors").children().children("tr").length - 1; j++){
+            data.section5.paper_awards[i].authors[j] = getInputValue("paper-awards-author-" + (j + 1) + "-" + (i + 1));
+        }
+        data.section5.paper_awards[i].conference_journal = getInputValue("paper-awards-awarding-" + (i + 1));
+        data.section5.paper_awards[i].wording = getInputValue("paper-awards-wording-" + (i + 1));
+        data.section5.paper_awards[i].date = getInputValue("paper-awards-date-" + (i + 1));
+    }
+    data.section5.memberships = [];
+    for (var i = 0; i < $("#memberships").children().children("tr").length - 1; i++) {
+        data.section5.memberships[i] = {};
+        data.section5.memberships[i].name = getInputValue("memberships-name-" + (i + 1));
+        data.section5.memberships[i].organization = getInputValue("memberships-organization-" + (i + 1));
+        data.section5.memberships[i].date = getInputValue("memberships-date-" + (i + 1));
+    }
+    data.section5.prizes = [];
+    for (var i = 0; i < $("#prizes").children().children("tr").length - 1; i++) {
+        data.section5.prizes[i] = {};
+        data.section5.prizes[i].recipient = getInputValue("prizes-recipient-" + (i + 1));
+        data.section5.prizes[i].name = getInputValue("prizes-name-" + (i + 1));
+        data.section5.prizes[i].institution = getInputValue("prizes-granting-institution-" + (i + 1));
+        data.section5.prizes[i].date = getInputValue("prizes-date-" + (i + 1));
+    }
+    data.section6 = {};
+    data.section6.collaborations = [];
+    for (var i = 0; i < $("#industry-collaborations").children().children("tr").length - 1; i++) {
+        data.section6.collaborations[i] = {};
+        data.section6.collaborations[i].company = getInputValue("industry-collaborations-company-" + (i + 1));
+        data.section6.collaborations[i].nature = getInputValue("industry-collaborations-nature-of-collaboration-" + (i + 1));
+    }
+    data.section7 = {};
+    data.section7.other = getInputValue("other-information");
     return data;
 }
