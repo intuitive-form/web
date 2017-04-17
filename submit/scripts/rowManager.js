@@ -40,5 +40,4 @@ function deleteRow() {
     }
     tableLevel2IdSet(sibling);
     $(sibling).find(".delete").each(tableRowNameSet);
-    //$(sibling).find(".delete").each(tableLevel2IdSet);
 }
