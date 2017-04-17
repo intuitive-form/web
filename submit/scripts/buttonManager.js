@@ -8,7 +8,6 @@ function setAddButtons(buttons) {
 }
 function setDeleteButtons(buttons) {
     buttons.attr("type", "button");
-    buttons.click(this, tableRowNameSet);
     buttons.click(this, deleteRow);
 }
 $( document ).ready(function(){
