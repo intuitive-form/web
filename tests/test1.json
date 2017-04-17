@@ -29,13 +29,15 @@
         "course_name": "Computer Architecture",
         "semester": "Fall",
         "kind": "Final exam",
-        "students_number": "125"
+        "students_number": "125",
+        "date": "2016-11-20"
       },
       {
         "course_name": "Pattern Recognition and Analysis",
         "semester": "Spring",
         "kind": "Final exam",
-        "students_number": "50"
+        "students_number": "50",
+        "date": "2016-05-07"
       }
     ],
     "students": [
