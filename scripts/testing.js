@@ -93,6 +93,7 @@ function test(testName) {
         setInputValue("examinations-semester-" + (i + 1), data.section2.examinations[i].semester);
         setInputValue("examinations-exam-kind-" + (i + 1), data.section2.examinations[i].kind);
         setInputValue("examinations-students-number-" + (i + 1), data.section2.examinations[i].students_number);
+        setInputValue("examinations-date-" + (i + 1), data.section2.examinations[i].date);
     }
     for (var i = 0; i < data.section2.students.length; i++){
         if (i > 0) { newRow($("#supervised-students")); }

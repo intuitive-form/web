@@ -30,6 +30,7 @@ function collectData() {
         data.section2.examinations[i].semester = getInputValue("examinations-semester-" + (i + 1));
         data.section2.examinations[i].kind = getInputValue("examinations-exam-kind-" + (i + 1));
         data.section2.examinations[i].students_number = getInputValue("examinations-students-number-" + (i + 1));
+        data.section2.examinations[i].date = getInputValue("examinations-date-" + (i + 1));
     }
     data.section2.students = [];
     for (var i = 0; i < $("#supervised-students").children().children("tr").length - 1; i++){
