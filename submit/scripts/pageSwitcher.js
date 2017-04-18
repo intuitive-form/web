@@ -3,13 +3,7 @@
  */
 $( document ).ready(function() {
     $( ".next" ).click(function() {
-        var dates = true;
-        var compulsoryFields = checkCompulsoryFields($(this).parent());
-        var connectedFields = checkConnectedFields($(this).parent());
-        if (compulsoryFields && connectedFields){
-            dates = dateCheck($(this).parent());
-        }
-        if (compulsoryFields && connectedFields && dates){
+        if (checkData($(this).parent())){
             $(this).parent().hide();
             $("#"+(parseInt($(this).parent().attr('id')) + 1)).show();
         }
