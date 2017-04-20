@@ -126,11 +126,11 @@ function test(testName) {
         setInputValue("research-projects-title-" + (i + 1), data.section3.projects[i].title);
         for (var j = 0; j < data.section3.projects[i].personnel.length; j++){
             if (j > 0) { newRow($("#personnel" + (i + 1))); }
-            setInputValue("research-projects-personnel-involved-name-" + (j + 1) + "-" + (i + 1), data.section3.projects[i].personnel[j].name);
+            setInputValue("research-projects-personnel-involved-name-" + (j + 1) + "-" + (i + 1), data.section3.projects[i].personnel[j]);
         }
         for (var j = 0; j < data.section3.projects[i].extra_personnel.length; j++){
             if (j > 0) { newRow($("#extra-personnel" + (i + 1))); }
-            setInputValue("research-projects-extra-personnel-involved-name-" + (j + 1) + "-" + (i + 1), data.section3.projects[i].extra_personnel[j].name);
+            setInputValue("research-projects-extra-personnel-involved-name-" + (j + 1) + "-" + (i + 1), data.section3.projects[i].extra_personnel[j]);
         }
         setInputValue("research-projects-start-date-" + (i + 1), data.section3.projects[i].start_date);
         setInputValue("research-projects-end-date-" + (i + 1), data.section3.projects[i].end_date);

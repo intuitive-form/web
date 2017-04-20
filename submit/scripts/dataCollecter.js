@@ -69,13 +69,11 @@ function collectData() {
         data.section3.projects[i].title = getInputValue("research-projects-title-" + (i + 1));
         data.section3.projects[i].personnel = [];
         for (var j = 0; j < $("#personnel" + (i + 1)).children().children("tr").length - 1; j++){
-            data.section3.projects[i].personnel[j] = {};
-            data.section3.projects[i].personnel[j].name = getInputValue("research-projects-personnel-involved-name-" + (j + 1) + "-" + (i + 1));
+            data.section3.projects[i].personnel[j] = getInputValue("research-projects-personnel-involved-name-" + (j + 1) + "-" + (i + 1));
         }
         data.section3.projects[i].extra_personnel = [];
         for (var j = 0; j < $("#extra-personnel" + (i + 1)).children().children("tr").length - 1; j++){
-            data.section3.projects[i].extra_personnel[j] = {};
-            data.section3.projects[i].extra_personnel[j].name = getInputValue("research-projects-extra-personnel-involved-name-" + (j + 1) + "-" + (i + 1));
+            data.section3.projects[i].extra_personnel[j] = getInputValue("research-projects-extra-personnel-involved-name-" + (j + 1) + "-" + (i + 1));
         }
         data.section3.projects[i].start_date = getInputValue("research-projects-start-date-" + (i + 1));
         data.section3.projects[i].end_date = getInputValue("research-projects-end-date-" + (i + 1));
@@ -88,8 +86,7 @@ function collectData() {
         data.section3.collaborations[i].name = getInputValue("research-collaboration-name-" + (i + 1));
         data.section3.collaborations[i].contacts = [];
         for (var j = 0; j < $("#contacts" + (i + 1)).children().children("tr").length - 1; j++){
-            data.section3.collaborations[i].contacts[j] = {};
-            data.section3.collaborations[i].contacts[j].name = getInputValue("research-collaboration-contracts-name-" + (j + 1) + "-" + (i + 1));
+            data.section3.collaborations[i].contacts[j] = getInputValue("research-collaboration-contracts-name-" + (j + 1) + "-" + (i + 1));
         }
         data.section3.collaborations[i].nature = getInputValue("research-collaboration-nature-" + (i + 1));
     }
@@ -160,7 +157,6 @@ function collectData() {
         data.section6.collaborations[i].company = getInputValue("industry-collaborations-company-" + (i + 1));
         data.section6.collaborations[i].nature = getInputValue("industry-collaborations-nature-of-collaboration-" + (i + 1));
     }
-    data.section7 = {};
-    data.section7.other = getInputValue("other-information");
+    data.section7 = getInputValue("other-information");
     return data;
 }

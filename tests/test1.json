@@ -87,12 +87,8 @@
       {
         "title": "Smart MutHaf: 3D Models, Motion Capture, and Animations towards an Interactive Online Museum of the UAE",
         "personnel": [
-          {
-            "name": "Hend Al Tair"
-          },
-          {
-            "name": "Amna Yammahi"
-          }
+          "Hend Al Tair",
+          "Amna Yammahi"
         ],
         "extra_personnel": [],
         "start_date": "2016-03-16",
@@ -102,12 +98,8 @@
       {
         "title": "Human and Cat Face Detection",
         "personnel": [
-          {
-            "name": "Alia Neyadi"
-          },
-          {
-            "name": "Noura Kuwaiti"
-          }
+          "Alia Neyadi",
+          "Noura Kuwaiti"
         ],
         "extra_personnel": [],
         "start_date": "2016-04-01",
@@ -120,9 +112,7 @@
         "country": "",
         "name": "",
         "contacts": [
-          {
-            "name": ""
-          }
+          ""
         ],
         "nature": ""
       }
