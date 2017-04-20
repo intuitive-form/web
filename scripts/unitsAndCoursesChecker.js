@@ -4,9 +4,11 @@
 var units = [];
 var courses = [];
 $.get("/units", function (data) {
+    console.log(data)
     units = JSON.parse(data);
 });
 $.get("/courses", function (data) {
+    console.log(data)
     courses = JSON.parse(data);
 });
 

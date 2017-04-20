@@ -9,9 +9,120 @@ function getInputValue(name) {
 function showData(data, form) {
     var well = form.find(".well");
     well.hide();
-    data = data.split("\n").join("<br />");
+    //data = data.split("\n").join("<br />");
     well.html(data);
     well.fadeIn();
+}
+
+function query1Post(form) {
+    $.post("/pubs",
+        { year: getInputValue("query1-year") }, function (data) {
+            var obj;
+            var output = "";
+            try {
+                obj = JSON.parse(data);
+            } catch (e) {
+                showData("Server error", form)
+                return;
+            }
+            if (obj.error != undefined){
+                output += "<strong>Error:</strong>" + obj.error;
+                showData(output, form);
+            }
+            else {
+                if (!(obj.journal_pubs instanceof Array) || !(obj.conf_pubs instanceof Array)) {
+                    showData("Server error", form)
+                    return;
+                }
+                output += "<h3>Journal publications</h3>"
+                for (i in obj.journal_pubs) {
+                    if (typeof obj.journal_pubs[i] !== "string") {
+                        showData("Server error", form);
+                        return;
+                    }
+                    output += obj.journal_pubs[i] + "<br/>";
+                }
+                output += "<h3>Conference publications</h3>"
+                for (i in obj.conf_pubs) {
+                    if (typeof obj.conf_pubs[i] !== "string") {
+                        showData("Server error", form);
+                        return;
+                    }
+                    output += obj.conf_pubs[i] + "<br/>";
+                }
+                showData(output, form);
+            }
+        });
+}
+
+function query2Post(form) {
+    $.post("/unit",{ unit:getInputValue("query2-unit-name") }, function (data) {
+        var obj;
+        var output = "";
+        try {
+            obj = JSON.parse(data);
+        } catch (e) {
+            showData("Server error", form)
+            return;
+        }
+        if (obj.error != undefined){
+            output += "<strong>Error:</strong>" + obj.error;
+            showData(output, form);
+        }
+        else {
+            if (!(obj.grants instanceof Array)) {
+                showData("Server error", form)
+                return;
+            }
+            output += "<h3>Grants</h3><table class='table table-condensed'>";
+            output += "<thead>"
+            output += "<tr><th>#</th><th>Title</th><th>Granting agency</th><th>Period start</th><th>Period end</th>"
+            //output += "<th>Continuation of other grant(if any)</th>"
+            output += "<th>Amount</th>"
+            output += "</tr></thead><tbody>"
+            for (i in obj.grants) {
+                if (typeof obj.grants[i] !== "object") {
+                    showData("Server error", form);
+                    return;
+                }
+                output += "<tr><td>" + (i + 1) + "</td>";
+
+                if (typeof obj.grants[i].title !== "string") {
+                    showData("Server error", form);
+                    return;
+                }
+                output += "<td>" + obj.grants[i].title + "</td>";
+
+                if (typeof obj.grants[i].granting_agency !== "string") {
+                    showData("Server error", form);
+                    return;
+                }
+                output += "<td>" + obj.grants[i].granting_agency + "</td>";
+
+                if (typeof obj.grants[i].period_start !== "string") {
+                    showData("Server error", form);
+                    return;
+                }
+                var date = obj.grants[i].period_start.split(" ");
+                output += "<td>" + date[2] + " " + date[1] + " " + date[0] + "</td>";
+
+                if (typeof obj.grants[i].period_end !== "string") {
+                    showData("Server error", form);
+                    return;
+                }
+                var date = obj.grants[i].period_end.split(" ");
+                output += "<td>" + date[2] + " " + date[1] + " " + date[0] + "</td>";
+
+                if (typeof obj.grants[i].amount !== "string") {
+                    showData("Server error", form);
+                    return;
+                }
+                output += "<td>" + amount + "</td></tr>";
+            }
+            output += "</tbody></table>"
+            showData(output, form);
+        }
+    });
 }
 
 $(document).ready(function () {
@@ -22,61 +133,10 @@ $(document).ready(function () {
             var requestName;
             switch (queryName) {
                 case "1":
-                    $.post("/pubs",
-                        { year: getInputValue("query1-year") },
-                        function (data) {
-                            var obj;
-                            var output = "";
-                            console.log(data);
-                            try {
-                                obj = JSON.parse(data);
-                            } catch (e) {
-                                showData("Server error", form)
-                                return;
-                            }
-                            if(!(obj.journal_pubs instanceof Array) || !(obj.conf_pubs instanceof Array)) {
-                                showData("Server error", form)
-                                return;
-                            }
-                            output += "<h3>Journal publications</h3>"
-                            for (i in obj.journal_pubs) {
-                                if(typeof obj.journal_pubs[i] !== "string")
-                                    continue;
-                                output += obj.journal_pubs[i] + "<br/>";
-                            }
-                            output += "<h3>Conference publications</h3>"
-                            for (i in obj.conf_pubs) {
-                                if(typeof obj.conf_pubs[i] !== "string")
-                                    continue;
-                                output += obj.conf_pubs[i] + "<br/>";
-                            }
-                            showData(output, form);
-                        }
-                    );
+                    query1Post(form);
                     break;
                 case "2":
-                    requestName = "/head/" + getInputValue("query2-unit-name");
-                    var text = [];
-                    text[0] = "";
-                    text[1] = "";
-                    text[2] = "";
-                    $.get(requestName, function (data) {
-                        text[0] = "Unit head:" + "\n" + data + "\n";
-                        showData(text.join(''), form);
-                    });
-                    requestName = "/courses/" + getInputValue("query2-unit-name");
-                    $.get(requestName, function (data) {
-                        text[1] = "Courses:" + "\n" + data + "\n";
-                        showData(text.join(''), form);
-                    });
-                    requestName = "/grants/" + getInputValue("query2-unit-name");
-                    $.get(requestName, function (data) {
-                        var array = data.split("\n");
-                        text[2] = "Grants:\n"
-                        for(var i = 0; i < array.length; i += 4)
-                            text[2] += array[i] + "\n"
-                        showData(text.join(''), form);
-                    });
+                    query2Post(form);
                     break;
                 case "3":   
                     requestName = "/courses/" + getInputValue("query3-laboratory-name") + "/" + getInputValue("query3-initial-date") + "/" + getInputValue("query3-final-date");
@@ -84,6 +144,11 @@ $(document).ready(function () {
                         showData(data, form);
                     });
                     break;
+                case "7":
+                    requestName = "/grants/";
+                    $.get(requestName, function (data) {
+                        showData(data, form);
+                    });
             }
         }
     });
