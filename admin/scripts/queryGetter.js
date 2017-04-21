@@ -70,6 +70,11 @@ function query2Post(form) {
             showData(output, form);
         }
         else {
+            if (typeof obj.grants[i].head !== "string") {
+                showData("Server error", form);
+                return;
+            }
+            output += "<h3>Head of the unit: " + obj.head + "</h3>";
             if (!(obj.grants instanceof Array)) {
                 showData("Server error", form)
                 return;
