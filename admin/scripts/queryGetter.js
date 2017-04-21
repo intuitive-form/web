@@ -118,7 +118,7 @@ function query2Post(form) {
             showData(output, form);
         }
         else {
-            if (typeof obj.grants[i].head !== "string") {
+            if (typeof obj.head !== "string") {
                 showData("Server error", form);
                 return;
             }
