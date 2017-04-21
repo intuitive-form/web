@@ -4,12 +4,6 @@
 function getAlertBlock(type, head, message) {
     return "<div class='col-sm-3'></div><div class='alert col-sm-6 alert-" + type + "'><strong>" + head + "</strong> " + message + "</div><div class='col-sm-3'></div>"
 }
-function checkData(form) {
-    var compulsoryFields = checkCompulsoryFields($(form));
-    var connectedFields = checkConnectedFields($(form));
-    var dates = dateCheck($(form));
-    return compulsoryFields && connectedFields && dates;
-}
 $( document ).ready(function(){
     $("form").submit(function () {
         event.preventDefault();

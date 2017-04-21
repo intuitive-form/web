@@ -4,11 +4,9 @@
 var units = [];
 var courses = [];
 $.get("/units", function (data) {
-    console.log(data)
     units = JSON.parse(data);
 });
 $.get("/courses", function (data) {
-    console.log(data)
     courses = JSON.parse(data);
 });
 
@@ -34,7 +32,6 @@ function checkUnit() {
         }
     }
     else if ($("body").find("form:visible").hasClass("query2")){
-        console.log("hi")
         removeAlert('query2-unit-name');
         var unit_name = getInputValue("query2-unit-name");
         if (!units.includes(unit_name)){
@@ -51,7 +48,6 @@ function checkUnit() {
     }
     else if ($("body").find("form:visible").hasClass("query7")){
         removeAlert("query7-laboratory-name");
-        console.log(units.includes(getInputValue("query7-laboratory-name")));
         if (!units.includes(getInputValue("query7-laboratory-name"))){
             addAlert("query7-laboratory-name", "Laboratory does not exist")
             return false;
