@@ -108,21 +108,21 @@ function query2Post(form) {
                     showData("Server error", form);
                     return;
                 }
-                var date = obj.grants[i].period_start.split(" ");
+                var date = obj.grants[i].period_start.split("-");
                 output += "<td>" + date[2] + " " + date[1] + " " + date[0] + "</td>";
 
                 if (typeof obj.grants[i].period_end !== "string") {
                     showData("Server error", form);
                     return;
                 }
-                var date = obj.grants[i].period_end.split(" ");
+                var date = obj.grants[i].period_end.split("-");
                 output += "<td>" + date[2] + " " + date[1] + " " + date[0] + "</td>";
 
-                if (typeof obj.grants[i].amount !== "string") {
+                if (typeof obj.grants[i].amount !== "number") {
                     showData("Server error", form);
                     return;
                 }
-                output += "<td>" + amount + "</td></tr>";
+                output += "<td>" + obj.grants[i].amount + "</td></tr>";
             }
             output += "</tbody></table>"
             showData(output, form);
