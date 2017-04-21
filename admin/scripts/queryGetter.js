@@ -90,7 +90,7 @@ function query2Post(form) {
                     showData("Server error", form);
                     return;
                 }
-                output += "<tr><td>" + (i + 1) + "</td>";
+                output += "<tr><td>" + (parseInt(i) + 1) + "</td>";
 
                 if (typeof obj.grants[i].title !== "string") {
                     showData("Server error", form);
