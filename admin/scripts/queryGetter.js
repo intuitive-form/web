@@ -35,7 +35,7 @@ function query1Post(form) {
                     return;
                 }
                 output += "<h3>Journal publications</h3>"
-                for (i in obj.journal_pubs) {
+                for (var i in obj.journal_pubs) {
                     if (typeof obj.journal_pubs[i] !== "string") {
                         showData("Server error", form);
                         return;
@@ -43,7 +43,7 @@ function query1Post(form) {
                     output += obj.journal_pubs[i] + "<br/>";
                 }
                 output += "<h3>Conference publications</h3>"
-                for (i in obj.conf_pubs) {
+                for (var i in obj.conf_pubs) {
                     if (typeof obj.conf_pubs[i] !== "string") {
                         showData("Server error", form);
                         return;
@@ -76,7 +76,7 @@ function query7Post(form) {
                 output += "<tr><th>#</th><th>Title</th><th>Amount</th>"
                 output += "</tr></thead><tbody>"
                 var total = 0;
-                for (i in obj.grants) {
+                for (var i in obj.grants) {
                     if (typeof obj.grants[i] !== "object") {
                         showData("Server error", form);
                         return;
@@ -133,7 +133,7 @@ function query2Post(form) {
             //output += "<th>Continuation of other grant(if any)</th>"
             output += "<th>Amount</th>"
             output += "</tr></thead><tbody>"
-            for (i in obj.grants) {
+            for (var i in obj.grants) {
                 if (typeof obj.grants[i] !== "object") {
                     showData("Server error", form);
                     return;
@@ -203,7 +203,7 @@ function query3Post(form) {
                 output += "<thead>"
                 output += "<tr><th>#</th><th>Name</th><th>Semester</th><th>Students number</th>"
                 output += "</tr></thead><tbody>"
-                for (i in obj.courses) {
+                for (var i in obj.courses) {
                     if (typeof obj.courses[i] !== "object") {
                         showData("Server error", form);
                         return;
@@ -259,7 +259,7 @@ function query4Post(form) {
                 output += "<thead>"
                 output += "<tr><th>Name</th><th>Nature of work</th>"
                 output += "</tr></thead><tbody>"
-                for (i in obj.supervised_students) {
+                for (var i in obj.supervised_students) {
                     if (typeof obj.supervised_students[i] !== "object") {
                         showData("Server error", form);
                         return;
@@ -308,7 +308,7 @@ function query6Post(form) {
                 output += "<thead>"
                 output += "<tr><th>#</th><th>Course</th><th>Date</th>"
                 output += "</tr></thead><tbody>"
-                for (i in obj.exams) {
+                for (var i in obj.exams) {
                     output += "<tr><td>" + (parseInt(i) + 1) + "</td>";
                     if (typeof obj.exams[i] !== "object") {
                         showData("Server error", form);
@@ -360,7 +360,7 @@ function query5Post(form) {
                 output += "<thead>"
                 output += "<tr><th>#</th><th>Country of institution</th><th>Name of institution</th><th>Contacts</th><th>Nature of collaboration</th>"
                 output += "</tr></thead><tbody>"
-                for (i in obj.research_collaborations) {
+                for (var i in obj.research_collaborations) {
                     output += "<tr><td>" + (parseInt(i) + 1) + "</td>";
                     if (typeof obj.research_collaborations[i] !== "object") {
                         showData("Server error", form);

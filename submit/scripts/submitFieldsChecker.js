@@ -27,14 +27,7 @@ function sendHandler(data, form) {
             form.parent().append(getAlertBlock("success", "Success!", "Form is successfully sent"));
             break;
         case "error":
-            switch (reply.reason) {
-                case "unit exists":
-                    form.parent().append(getAlertBlock("danger", "Error!", "Unit already exists."));
-                    break;
-                default:
-                    form.parent().append(getAlertBlock("danger", "Error!", "Some error happened."));
-                    break;
-            }
+            form.parent().append(getAlertBlock("danger", "Error: ", reply.error));
             break;
         }
         form.hide();

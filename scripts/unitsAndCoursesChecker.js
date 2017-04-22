@@ -4,10 +4,40 @@
 var units = [];
 var courses = [];
 $.get("/units", function (data) {
-    units = JSON.parse(data);
+    try {
+        var obj = JSON.parse(data);
+        if (!(obj instanceof Array)) {
+            console.log("Not an array");
+            return;
+        }
+        units = obj;
+    }
+    catch (e){
+        console.log(e);
+    }
 });
 $.get("/courses", function (data) {
-    courses = JSON.parse(data);
+    try {
+        var obj = JSON.parse(data)
+        if (!(obj instanceof Array)) {
+            console.log("Not an array")
+            return;
+        }
+        for (var i in obj){
+            if (typeof obj[i] !== "object"){
+                console.log("not an object");
+                return;
+            }
+            if (typeof obj[i].title !== "string"){
+                console.log("not a string");
+                return;
+            }
+            courses.push(obj[i].title);
+        }
+    }
+    catch (e){
+        console.log(e);
+    }
 });
 
 function removeAlert(inputName) {
@@ -27,15 +57,15 @@ function setCourseName() {
     $(".course-name").change(function () {
         console.log(1)
         if ($(this).val() != "") {
-            if (!$("#course-option" + $(this).parents("tr").index()).length){
-                $(".courses-select").append("<option id='course-option" + $(this).parents("tr").index() + "'>" + $(this).val() + "</option>");
+            if (!$(".course-option" + $(this).parents("tr").index()).length){
+                $(".courses-select").append("<option class='course-option" + $(this).parents("tr").index() + "'>" + $(this).val() + "</option>");
             }
             else {
-                $("#course-option" + $(this).parents("tr").index()).html($(this).val());
+                $(".course-option" + $(this).parents("tr").index()).html($(this).val());
             }
         }
         else {
-            $("#course-option" + $(this).parents("tr").index()).remove();
+            $(".course-option" + $(this).parents("tr").index()).remove();
         }
     });
 }
