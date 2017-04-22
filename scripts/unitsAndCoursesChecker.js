@@ -22,6 +22,30 @@ function isVisible(elementIDSelector) {
     return $(elementIDSelector).css("display") == "block"
 }
 
+function setCourseName() {
+    $(".course-name").off("change");
+    $(".course-name").change(function () {
+        console.log(1)
+        if ($(this).val() != "") {
+            if (!$("#course-option" + $(this).parents("tr").index()).length){
+                $(".courses-select").append("<option id='course-option" + $(this).parents("tr").index() + "'>" + $(this).val() + "</option>");
+            }
+            else {
+                $("#course-option" + $(this).parents("tr").index()).html($(this).val());
+            }
+        }
+        else {
+            $("#course-option" + $(this).parents("tr").index()).remove();
+        }
+    });
+}
+$( document ).ready(function(){
+    for (var i = 0; i < courses.length; i++){
+        $(".courses-select").append("<option>" + courses[i] + "</option>")
+    }
+    setCourseName();
+});
+
 function checkUnit() {
     if (isVisible("#2")) {
         removeAlert('unit-name');
@@ -70,7 +94,7 @@ function checkCourses() {
         $("#examinations").children().last().children().each(function (index) {
             removeAlert('examinations-course-name-');
             var value = getInputValue("examinations-course-name-" + (index + 1));
-            if (!(courses.includes(value)) && !(input_courses.includes(value))){
+            if (!(courses.includes(value)) || !(input_courses.includes(value))){
                 addAlert('examinations-course-name-', "Course does not exists");
                 return false;
             }
