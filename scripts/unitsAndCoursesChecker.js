@@ -110,25 +110,26 @@ function checkUnit() {
     return true;
 }
 function checkCourses() {
+    var result = true;
     if (isVisible("#3")) {
         var input_courses = [];
         $("#courses").children().last().children().each(function (index) {
             removeAlert('courses-course-name-' + (index + 1));
             var value = getInputValue("courses-course-name-" + (index + 1));
             if (courses.includes(value)){
-                addAlert('courses-course-name-', "Course already exists");
-                return false;
+                addAlert('courses-course-name-' + (index + 1), "Course already exists");
+                result = false;
             }
             input_courses.push(value);
         });
         $("#examinations").children().last().children().each(function (index) {
             removeAlert('examinations-course-name-');
             var value = getInputValue("examinations-course-name-" + (index + 1));
-            if (!(courses.includes(value)) || !(input_courses.includes(value))){
-                addAlert('examinations-course-name-', "Course does not exists");
-                return false;
+            if (!(input_courses.includes(value)) && !(courses.includes(value))){
+                addAlert('examinations-course-name-' + (index + 1), "Course does not exists");
+                result = false;
             }
         });
     }
-    return true;
+    return result;
 }

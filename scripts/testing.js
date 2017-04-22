@@ -89,6 +89,7 @@ function test(testName) {
     }
     for (var i = 0; i < data.section2.examinations.length; i++){
         if (i > 0) { newRow($("#examinations")); }
+        $(".courses-select").append("<option>" + data.section2.examinations[i].course_name + "</option>");
         setInputValue("examinations-course-name-" + (i + 1), data.section2.examinations[i].course_name);
         setInputValue("examinations-semester-" + (i + 1), data.section2.examinations[i].semester);
         setInputValue("examinations-exam-kind-" + (i + 1), data.section2.examinations[i].kind);
