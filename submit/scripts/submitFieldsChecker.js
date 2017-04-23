@@ -5,7 +5,7 @@ function getAlertBlock(type, head, message) {
     return "<div class='col-sm-3'></div><div class='alert col-sm-6 alert-" + type + "'><strong>" + head + "</strong> " + message + "</div><div class='col-sm-3'></div>"
 }
 $( document ).ready(function(){
-    $("form").submit(function () {
+    $("#submit").click(function () {
         event.preventDefault();
         if (checkData($(this))) {
             var form = $(this);

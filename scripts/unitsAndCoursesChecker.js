@@ -70,9 +70,17 @@ function setCourseName() {
     });
 }
 $( document ).ready(function(){
-    for (var i = 0; i < courses.length; i++){
-        $(".courses-select").append("<option>" + courses[i] + "</option>")
+    if ($(".courses-select").length) {
+        for (var i = 0; i < courses.length; i++) {
+            $(".courses-select").append("<option>" + courses[i] + "</option>")
+        }
     }
+    $(".unit-select").each(function(){
+        for (var i = 0; i < units.length; i++) {
+            $(this).append("<option>" + units[i] + "</option>");
+        }
+        $(this).editableSelect();
+    });
     setCourseName();
 });
 
