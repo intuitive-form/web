@@ -11,6 +11,15 @@ $.get("/units", function (data) {
             return;
         }
         units = obj;
+        $( document ).ready(function(){
+            $(".unit-select").each(function(){
+                console.log(units)
+                for (var i = 0; i < units.length; i++) {
+                    $(this).append("<option>" + units[i] + "</option>");
+                }
+                $(this).editableSelect();
+            });
+        });
     }
     catch (e){
         console.log(e);
@@ -34,6 +43,14 @@ $.get("/courses", function (data) {
             }
             courses.push(obj[i].title);
         }
+        $( document ).ready(function(){
+            if ($(".courses-select").length) {
+                for (var i = 0; i < courses.length; i++) {
+                    $(".courses-select").append("<option>" + courses[i] + "</option>")
+                }
+            }
+            setCourseName();
+        });
     }
     catch (e){
         console.log(e);
@@ -55,7 +72,6 @@ function isVisible(elementIDSelector) {
 function setCourseName() {
     $(".course-name").off("change");
     $(".course-name").change(function () {
-        console.log(1)
         if ($(this).val() != "") {
             if (!$(".course-option" + $(this).parents("tr").index()).length){
                 $(".courses-select").append("<option class='course-option" + $(this).parents("tr").index() + "'>" + $(this).val() + "</option>");
@@ -69,20 +85,6 @@ function setCourseName() {
         }
     });
 }
-$( document ).ready(function(){
-    if ($(".courses-select").length) {
-        for (var i = 0; i < courses.length; i++) {
-            $(".courses-select").append("<option>" + courses[i] + "</option>")
-        }
-    }
-    $(".unit-select").each(function(){
-        for (var i = 0; i < units.length; i++) {
-            $(this).append("<option>" + units[i] + "</option>");
-        }
-        $(this).editableSelect();
-    });
-    setCourseName();
-});
 
 function checkUnit() {
     if (isVisible("#2")) {
