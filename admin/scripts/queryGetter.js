@@ -211,7 +211,7 @@ function query2Post(form) {
                 return;
             }
             output += "<h3>Patents</h3><table class='table table-condensed'><thead>";
-            output += "<table><tr><th>Title</th><th>Сountry of patent</th></tr></thead><tbody>";
+            output += "<tr><th>Title</th><th>Сountry of patent</th></tr></thead><tbody>";
             for (var i in obj.patents) {
                 if (typeof obj.patents[i] !== "object") {
                     showData("Server error", form);
