@@ -6,9 +6,8 @@ function getAlertBlock(type, head, message) {
 }
 $( document ).ready(function(){
     $("#submit").click(function () {
-        event.preventDefault();
-        if (checkData($(this))) {
-            var form = $(this).parents("form");
+        var form = $(this).parents("form");
+        if (checkData(form)) {
             $.post("submit", { "value": JSON.stringify(collectData()) }).done(function(data){sendHandler(data, form);});
         }
     });

@@ -61,7 +61,7 @@ function unfill() {
 }
 
 function submit() {
-    $("[type='submit']").trigger("click");
+    $("#submit").trigger("click");
 }
 
 function setInputValue(name, value) {
