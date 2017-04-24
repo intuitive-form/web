@@ -8,7 +8,7 @@ $( document ).ready(function(){
     $("#submit").click(function () {
         event.preventDefault();
         if (checkData($(this))) {
-            var form = $(this);
+            var form = $(this).parents("form");
             $.post("submit", { "value": JSON.stringify(collectData()) }).done(function(data){sendHandler(data, form);});
         }
     });

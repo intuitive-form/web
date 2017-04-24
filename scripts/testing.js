@@ -139,11 +139,11 @@ function test(testName) {
     }
     for (var i = 0; i < data.section3.collaborations.length; i++){
         if (i > 0) { newRow($("#collaborations")); }
-        setInputValue("research-collaboration-country-" + (i + 1), data.section3.collaborations[i].country);data.section3.collaborations[i].name
-        setInputValue("research-collaboration-name-" + (i + 1));
+        setInputValue("research-collaboration-country-" + (i + 1), data.section3.collaborations[i].country);
+        setInputValue("research-collaboration-name-" + (i + 1), data.section3.collaborations[i].name);
         for (var j = 0; j < data.section3.collaborations[i].contacts.length; j++){
             if (j > 0) { newRow($("#contacts") + (i + 1)); }
-            setInputValue("research-collaboration-contracts-name-" + (j + 1) + "-" + (i + 1), data.section3.collaborations[i].contacts[j].name);
+            setInputValue("research-collaboration-contracts-name-" + (j + 1) + "-" + (i + 1), data.section3.collaborations[i].contacts[j]);
         }
         setInputValue("research-collaboration-nature-" + (i + 1), data.section3.collaborations[i].nature);
     }
@@ -151,8 +151,8 @@ function test(testName) {
         if (i > 0) { newRow($("#conference-publications")); }
         setInputValue("conference-publications-title-" + (i + 1), data.section3.conference_publications[i].title);
         for (var j = 0; j < data.section3.conference_publications[i].authors.length; j++){
-            if (j > 0) { newRow($("#conference-authors") + (i + 1)); }
-            setInputValue("conference-publications-author-name-" + (j + 1) + "-" + (i + 1), data.section3.conference_publications[i].authors[j]);
+            if (j > 0) { newRow($("#conference-authors" + (i + 1))); }
+            setInputValue("conference-publications-author-" + (j + 1) + "-" + (i + 1), data.section3.conference_publications[i].authors[j]);
         }
         setInputValue("conference-publications-date-" + (i + 1), data.section3.conference_publications[i].date);
     }
@@ -160,8 +160,8 @@ function test(testName) {
         if (i > 0) { newRow($("#journal-publications")); }
         setInputValue("journal-publications-title-" + (i + 1), data.section3.journal_publications[i].title);
         for (var j = 0; j < data.section3.journal_publications[i].authors.length; j++){
-            if (j > 0) { newRow($("#journal-authors") + (i + 1)); }
-            setInputValue("journal-publications-author-name-" + (j + 1) + "-" + (i + 1), data.section3.journal_publications[i].authors[j]);
+            if (j > 0) { newRow($("#journal-authors" + (i + 1))); }
+            setInputValue("journal-publications-author-" + (j + 1) + "-" + (i + 1), data.section3.journal_publications[i].authors[j]);
         }
         setInputValue("journal-publications-date-" + (i + 1), data.section3.journal_publications[i].date);
     }
@@ -172,13 +172,13 @@ function test(testName) {
     }
     for (var i = 0; i < data.section4.licensing.length; i++){
         if (i > 0) { newRow($("#licensing")); }
-        setInputValue("licensing-title-" + (i + 1), data.section4.patents[i].title);
+        setInputValue("licenses-title-" + (i + 1), data.section4.licensing[i]);
     }
     for (var i = 0; i < data.section5.paper_awards.length; i++){
         if (i > 0) { newRow($("#paper-awards")); }
         setInputValue("paper-awards-title-" + (i + 1), data.section5.paper_awards[i].title);
         for (var j = 0; j < data.section5.paper_awards[i].authors.length; j++){
-            if (j > 0) { newRow($("#paper-authors") + (i + 1)); }
+            if (j > 0) { newRow($("#paper-authors" + (i + 1))); }
             setInputValue("paper-awards-author-" + (j + 1) + "-" + (i + 1), data.section5.paper_awards[i].authors[j]);
         }
         setInputValue("paper-awards-awarding-" + (i + 1), data.section5.paper_awards[i].conference_journal);
@@ -200,8 +200,8 @@ function test(testName) {
     }
     for (var i = 0; i < data.section6.collaborations.length; i++) {
         if (i > 0) { newRow($("#industry-collaborations")); }
-        getInputValue("industry-collaborations-company-" + (i + 1), data.section6.collaborations[i].company);
-        getInputValue("industry-collaborations-nature-of-collaboration-" + (i + 1), data.section6.collaborations[i].nature);
+        setInputValue("industry-collaborations-company-" + (i + 1), data.section6.collaborations[i].company);
+        setInputValue("industry-collaborations-nature-of-collaboration-" + (i + 1), data.section6.collaborations[i].nature);
     }
     setInputValue("other-information", data.section7.other);
 }
