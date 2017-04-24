@@ -2,7 +2,7 @@
  * Created by Lena Lebedeva on 07.04.2017.
  */
 function getAlertBlock(type, head, message) {
-    return "<div class='col-sm-3'></div><div class='alert col-sm-6 alert-" + type + "'><strong>" + head + "</strong> " + message + "</div><div class='col-sm-3'></div>"
+    return "<div class='col-sm-3'></div><div id='result' class='alert col-sm-6 alert-" + type + "'><strong>" + head + "</strong> " + message + "</div><div class='col-sm-3'></div>"
 }
 $( document ).ready(function(){
     $("#submit").click(function () {
@@ -29,5 +29,11 @@ function sendHandler(data, form) {
             form.parent().append(getAlertBlock("danger", "Error: ", reply.error));
             break;
         }
+        form.parent().append('<div class="col-sm-1"><input type="button" class="btn btn-default center-block get" id="back" value="Back"></div>')
+        $("#back").click(function () {
+            $("#result").remove();
+            $("#1").show();
+            $(this).remove();
+        });
         form.hide();
 }
