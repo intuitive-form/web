@@ -92,15 +92,15 @@
         "period_start": "2016-04-02",
         "period_end": "2017-10-11",
         "continuation": "",
-        "amount": "100"
+        "amount": "400"
       },
       {
         "title": "How to Build Ethics into Robust Artificial Intelligence",
         "agency": "CNCS",
         "period_start": "2016-08-13",
         "period_end": "2017-12-01",
-        "continuation": "",
-        "amount": "200"
+        "continuation": "last year the same grant",
+        "amount": "300"
       }
     ],
     "projects": [
