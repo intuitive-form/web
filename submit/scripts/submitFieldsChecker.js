@@ -32,6 +32,8 @@ function sendHandler(data, form) {
         form.parent().append('<div class="col-sm-1"><input type="button" class="btn btn-default center-block get" id="back" value="Back"></div>')
         $("#back").click(function () {
             $("#result").remove();
+            form.show();
+            $("#8").hide();
             $("#1").show();
             $(this).remove();
         });
