@@ -171,6 +171,78 @@ function query2Post(form) {
                     return;
                 }
                 output += "<td>" + obj.grants[i].amount + "</td></tr>";
+
+            }
+            output += "</tbody></table>"
+
+            if (!(obj.phd_theses instanceof Array)) {
+                showData("Server error", form)
+                return;
+            }
+            output += "<h3>PhD theses</h3><table class='table table-condensed'><thead>";
+            output += "<tr><th>Student name</th><th>Title</th><th>Publication plans</th></tr></thead><tbody>";
+            for (var i in obj.phd_theses) {
+                if (typeof obj.phd_theses[i] !== "object") {
+                    showData("Server error", form);
+                    return;
+                }
+                if (typeof obj.phd_theses[i].author !== "string") {
+                    showData("Server error", form);
+                    return;
+                }
+                output += "<tr><td>" + obj.phd_theses[i].author + "</td>";
+
+                if (typeof obj.phd_theses[i].title !== "string") {
+                    showData("Server error", form);
+                    return;
+                }
+                output += "<td>" + obj.phd_theses[i].title + "</td>";
+
+                if (typeof obj.phd_theses[i].plans !== "string") {
+                    showData("Server error", form);
+                    return;
+                }
+                output += "<td>" + obj.phd_theses[i].plans + "</td></tr>";
+            }
+            output += "</tbody></table>"
+
+            if (!(obj.patents instanceof Array)) {
+                showData("Server error", form)
+                return;
+            }
+            output += "<h3>Patents</h3><table class='table table-condensed'><thead>";
+            output += "<table><tr><th>Title</th><th>Сountry of patent</th></tr></thead><tbody>";
+            for (var i in obj.patents) {
+                if (typeof obj.patents[i] !== "object") {
+                    showData("Server error", form);
+                    return;
+                }
+                if (typeof obj.patents[i].title !== "string") {
+                    showData("Server error", form);
+                    return;
+                }
+                output += "<tr><td>" + obj.patents[i].title + "</td>";
+
+                if (typeof obj.patents[i].country !== "string") {
+                    showData("Server error", form);
+                    return;
+                }
+                output += "<td>" + obj.patents[i].country + "</td></tr>";
+            }
+            output += "</tbody></table>"
+
+            if (!(obj.ip_licenses instanceof Array)) {
+                showData("Server error", form)
+                return;
+            }
+            output += "<h3>IP licenses</h3><table class='table table-condensed'><thead>";
+            output += "<tr><th>Title</th></tr></thead><tbody>";
+            for (var i in obj.ip_licenses) {
+                if (typeof obj.ip_licenses[i] !== "string") {
+                    showData("Server error", form);
+                    return;
+                }
+                output += "<tr><td>" + obj.ip_licenses[i] + "</td></tr>";
             }
             output += "</tbody></table>"
             showData(output, form);

@@ -9,7 +9,7 @@ $( document ).ready(function() {
             $("#"+(parseInt($(this).parent().attr('id')) + 1)).show();
         }
         else {
-            $("body").scrollTop($(".alert:first").position().top/2)
+            $("body").scrollTop($(".alert:first").offset().top - $(window).height()/2)
         }
     });
     $( ".previous" ).click(function() {

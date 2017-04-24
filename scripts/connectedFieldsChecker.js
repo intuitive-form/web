@@ -15,8 +15,8 @@ function checkConnectedFields(page) {
     for (var i = 0; i < rows.length; i++) {
         var connectedFields = $(rows[i]).find(".connectedField");
         if (connectedFields.length != 0) var filled = connectedFields[0].value != "";
-        cancelWarning(connectedFields);
         for (var j = 1; j < connectedFields.length; j++) {
+            cancelWarning(connectedFields);
             if (filled != (connectedFields[j].value != "")){
                 condition = false;
                 warning(connectedFields);

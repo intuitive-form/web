@@ -13,7 +13,6 @@ $.get("/units", function (data) {
         units = obj;
         $( document ).ready(function(){
             $(".unit-select").each(function(){
-                console.log(units)
                 for (var i = 0; i < units.length; i++) {
                     $(this).append("<option>" + units[i] + "</option>");
                 }
